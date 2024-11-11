@@ -2,6 +2,10 @@
 * Функция для обработки RFID-метки (банковской карты)        *
 *************************************************************/
 
+MFRC522 rfid(SS_PIN, RST_PIN);   // Объект rfid модуля
+MFRC522::MIFARE_Key key;         // Объект ключа
+MFRC522::StatusCode status;      // Объект статуса
+
 void rfidCart(){
   static uint32_t rebootTimer = millis(); // Важный костыль против зависания модуля!
   if (millis() - rebootTimer >= 1000) {   // Таймер с периодом 1000 мс
