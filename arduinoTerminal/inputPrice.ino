@@ -5,7 +5,6 @@
 
 String inputPrice()
 {
-  lcd.setCursor(0,0);                              // Установка курсора в начальное положения на дисплее
   displayMessage("To be paid:", true, 0, 0);       // Вывод на дисплей
   displayMessage("RUB", false, 13, 1);             // Вывод на дисплей
   return keyboard();                               // Вызов функции для работы с клавиатурой (keyboard.ino) И одновременно возвращаем в переменную priceString
