@@ -1,51 +1,58 @@
 /*************************************************************
-* Функция отправляет на сервер запрос на платеж по карте и    *
-* возвращает статус оплаты (true или false)                 *
+* Функция отправляет на сервер запрос на платеж по карте     *
 *************************************************************/
 
-void processPayment(  String &pincodeString, ///< pincodeString - буффер пинкода.
-                      int &attemptCounter)   ///< attemptCounter - счетчик неудачных попыток.
+void processPayment(String priceString, ///< priceString - сумма к оплате
+                    String uid_String)   ///< uidString - уникальный номер rdif-метки (банковской карты)
 {
-  bool statusTransaction;                                 // Переменная, хранящая статус оплаты, отправляется на сервер и возврашает true или false.
-  bool blockIsCart = false;                               // Переменная для блокировки карты
-  bool pincodeNeed;
+    String pincodeServer = "";                                // Буффер, который будет хранить пинкод.                    
+    int attemptCounter = 0;                                   // Счетчик попыток оплаты для блокировки карты.
+    bool statusTransaction = true;                            // Переменная, хранящая статус оплаты, отправляется на сервер и возвращает true или false.
+    bool blockIsCart = false;                                 // Переменная для блокировки карты.
+    bool pincodeNeed = true;                                  // Переменная, показывающая необходимость ввода пинкода, отправляется на сервер и возвращает true или false.
 
-  displayMessage("Processing tran-", true, 0, 0, false);  // Вывод на дисплей.
-  displayMessage("saction.Wait", false, 0, 1, false);     // Вывод на дисплей.
+  displayMessage("Processing tran-", true, 0, 0);             // Вывод на дисплей.
+  displayMessage("saction.Wait", false, 0, 1);                // Вывод на дисплей.
 
-  for (int j = 0; j < 4; j++)                             // Цикл для выведения точек для имитации загрузки терминала.
+  for (int j = 0; j < 4; j++)                                 // Цикл для выведения точек для имитации загрузки терминала.
   {
-    lcd.print("."); 
-    delay(1000);                                          // Задержка между появлениями точек.
+    lcd.print(".");                                           // Выводим поочередно точки
+    delay(1000);                                              // Задержка между появлениями точек.
   }
 
-  // Отправляем пинкод, UID-карты и количество попыток на сервер и обрабатываем платеж.
+  // Отправляем UID-карты, необходиммость ввода пинкода и количество попыток на сервер и обрабатываем платеж.
 
-  if(statusTransaction == true && blockIsCart == false && pincodeNeed == false)   // Проверяем одобрил ли сервер транзакции и не заблокирована ли карта.
+  if(statusTransaction == true && blockIsCart == false && pincodeNeed == false)       // Если транзакция одобрена, карта не заблокирована и пинкода не нужен, то оплата произведена.
   {
-    displayMessage("Payment", true, 4, 0, false);         // Выводим сообщение.
-    displayMessage("successful!", false, 2, 1, true);     // Выводим сообщение.
-    pincodeString = "";                                   // Очищаем буффер пинкода у терминала.
+    displayMessage("Payment", true, 4, 0);                    // Выводим сообщение.
+    displayMessage("successful!", false, 2, 1);               // Выводим сообщение.
   }
 
-  else if(statusTransaction == true && blockIsCart == false && pincodeNeed == true)   // Проверяем одобрил ли сервер транзакции и не заблокирована ли карта.
+  else if(statusTransaction == true && blockIsCart == false && pincodeNeed == true)  // Если транзакция одобрена, карта не заблокирована и пинкод нужен, то вводим пинкод.
   {
-    displayMessage("Payment", true, 4, 0, false);         // Выводим сообщение.
-    displayMessage("successful!", false, 2, 1, true);     // Выводим сообщение.
-    pincodeString = "";                                   // Очищаем буффер пинкода у терминала.
+    displayMessage("Input pincode:", true, 0,0);              // Выводим сообщение.   // В случае неверного ввода пинкода, счетчик неудачных попыток attemptCounter +1 и отказ в оплате.
+
+    if (pincodeServer == keyboard())                          // Вызываем функцию для ввода пинкода и сравниваем его с пинкодом, который пришел с сервера (с базы данных).
+    {
+      displayMessage("Payment", true, 4, 0);                  // Выводим сообщение.
+      displayMessage("successful!", false, 2, 1);             // Выводим сообщение.
+    }
+    else
+    {
+      displayMessage("Error Input", 1, 0,0);                  // Вывоидм сообщение.
+      attemptCounter++;                                       // Увеличиваем счетчик неудачных попыток на +1 из-за неудачной попытки ввода пинкода
+
+    }
   }
   
-  else if(blockIsCart == true)                            // Проверяем не заблокирована ли "банковская карта".
+  else if(blockIsCart == true)                                // Проверяем не заблокирована ли "банковская карта".
   {
-    displayMessage("Cart is block", true, 0,0, true);     // Выводим сообщение о блокировки карты, дальнейшая оплата по ней невозможна.
-    pincodeString = "";                                 
+    displayMessage("Cart is block", true, 0,0);               // Выводим сообщение о блокировки карты, дальнейшая оплата по ней невозможна.
   }
 
   else
   {
-    displayMessage("No money", true, 0, 0, true);         // В случае отказа сервера в транзакции из-за нехватки средств выводим сообщение о отсуствие средств.
-    attemptCounter++;                                     // Увеличиваем счетчик попыток оплаты "банковской картой".
-    pincodeString = "";                                   
+    displayMessage("No money", true, 0, 0);                   // В случае отказа сервера в транзакции из-за нехватки средств выводим сообщение о отсуствие средств.
+    attemptCounter++;                                         // Увеличиваем счетчик попыток оплаты "банковской картой".                             
   }
-
 }

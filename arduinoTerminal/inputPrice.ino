@@ -3,40 +3,11 @@
 *************************************************************/
 
 
-bool inputPrice(char customKey,         ///< Символ, введеный с клавиатуры
-                int &i,                 ///< Положение курсора для последовательного ввода символов на дисплей
-                String &priceString)    ///< Буффер для пинкода
+String inputPrice()
 {
-  static bool flagKey = true;                             // Флаг для блокировки клавиатуры после ввода суммы к оплате
-  lcd.print("To be paid:");                               // Вывод на дисплей
-  displayMessage("RUB", false, 13, 1, false);             // Вывод на дисплей
-  if(customKey && flagKey == true)                        // Если клавиша нажата на терминале И флаг блокировки клавиатуры true, то вводим сумму к оплате
-  {
-    if (customKey != KEY_HASH && customKey != KEY_STAR)   // Проверяем на функциональные клавиши KEY_STAR == "*", KEY_HACH = "#""
-    {
-      lcd.setCursor(i, 1);                                // Устанавливаем курсор на начало второй строки
-      lcd.print(customKey);                               // Выводим на экран введеный символ пинкода
-      priceString += customKey;
-      i++;                                                // Прибавляем в счетчик для перемещения курсора экрана
-    }
-
-    else if (customKey == KEY_STAR)                       // Удаление введенного символа в экране
-    {
-      if (i > 0)                                          // Проверка на минимальное значение (возможно символов вовсе нет)
-      {
-        i--;
-        lcd.setCursor(i, 1);                              // Установка курсора под следующий введенный символ
-        lcd.print(" ");                                   // Заполнение строки на экране пустотой
-        priceString.remove(priceString.length() - 1);
-      }                                        
-    }
-
-    else if(customKey == KEY_HASH)
-    {
-      flagKey = false;                                    // Блокируем клавиатуру для ввода если нажата клавиша ВВОД (#)
-      return true;
-    }
-  }
-
-  return false;
+  lcd.setCursor(0,0);                              // Установка курсора в начальное положения на дисплее
+  displayMessage("To be paid:", true, 0, 0);       // Вывод на дисплей
+  displayMessage("RUB", false, 13, 1);             // Вывод на дисплей
+  return keyboard();                               // Вызов функции для работы с клавиатурой (keyboard.ino) И одновременно возвращаем в переменную priceString
+  
 }
