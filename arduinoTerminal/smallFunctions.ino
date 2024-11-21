@@ -8,7 +8,10 @@ void displayMessage(  String message,  ///> message - сообщение для 
                       int rows,        ///> rows - столбец.
                       int cols)        ///> cols - строка.
 {
-  if(clear){lcd.clear();}              // Если clear == 1 - очищаем дисплей от всех символов.                                         
+  if(clear)  // Если clear == True - очищаем дисплей от всех символов.
+  {
+    lcd.clear();
+  }                                         
   lcd.setCursor(rows,cols);            // Установка курсора на дисплее для последующего ввода символов.                                   
   lcd.print(message);                  // Вывод сообщения на дисплей.                                      
 }
