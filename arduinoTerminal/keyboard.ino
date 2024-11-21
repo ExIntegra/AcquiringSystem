@@ -12,26 +12,28 @@ String keyboard()
   while (true)                         // Создаем бесконечный цикл для обновления хранимого символа в customKey
   {
     customKey = customKeypad.getKey(); // Получаем текущую нажатую клавишу
-    if (customKey)                     // Если клавиша нажата, то обрабатываем ее вывод и хранение в digits_String
+    if (!customKey)                     // Если клавиша нажата, то обрабатываем ее вывод и хранение в digits_String
     {
-      if (customKey != KEY_HASH && customKey != KEY_STAR)   // Проверяем на функциональные клавиши KEY_STAR == "*", KEY_HACH = "#""
-      {
-        lcd.setCursor(cursorPointer, 1);                    // Устанавливаем курсор на начало второй строки
-        lcd.print(customKey);                               // Выводим на экран введеный символ пинкода
-        cursorPointer++;                                    // Прибавляем в счетчик для перемещения курсора экрана
-        digitsString += customKey;                          // Добавляем в буффер введенный символ
-      }
-
-      else if (customKey == KEY_STAR && (cursorPointer > 0) // Если нажата на клавиатуре "*", то происходит удаление введенного последнего символа на экране
-      {                                                     // или проверка на минимальное значение (возможно символов вовсе нет)
-        lcd.setCursor(cursorPointer--, 1);                // Установка курсора на место последнего введенного символа
-        lcd.print(" ");                                   // Заменяем последний введеный символ пустотой
-        digitsString.remove(digitsString.length() - 1);   // Удаляем из буффера последний введный символ
-      }
-      else if(customKey == KEY_HASH)                        // Если нажата клавиша "#", то выходим из функции и  возвращаем буффер с цифрами
-      {                            
-        return digitsString;
-      }                            
+      continue;
     }
+      
+    if (customKey != KEY_HASH && customKey != KEY_STAR)   // Проверяем на функциональные клавиши KEY_STAR == "*", KEY_HACH = "#""
+    {
+      lcd.setCursor(cursorPointer, 1);                    // Устанавливаем курсор на начало второй строки
+      lcd.print(customKey);                               // Выводим на экран введеный символ пинкода
+      cursorPointer++;                                    // Прибавляем в счетчик для перемещения курсора экрана
+      digitsString += customKey;                          // Добавляем в буффер введенный символ
+    }
+
+    else if (customKey == KEY_STAR && (cursorPointer > 0) // Если нажата на клавиатуре "*", то происходит удаление введенного последнего символа на экране
+    {                                                     // или проверка на минимальное значение (возможно символов вовсе нет)
+      lcd.setCursor(cursorPointer--, 1);                // Установка курсора на место последнего введенного символа
+      lcd.print(" ");                                   // Заменяем последний введеный символ пустотой
+      digitsString.remove(digitsString.length() - 1);   // Удаляем из буффера последний введный символ
+    }
+    else if(customKey == KEY_HASH)                        // Если нажата клавиша "#", то выходим из функции и  возвращаем буффер с цифрами
+    {                            
+      return digitsString;
+    }                            
   }
 }
