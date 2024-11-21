@@ -4,6 +4,6 @@
 
 String handlePinInput()
 {
-  displayMessage("Input pincode:", true, 0,0); // Вывод сообщения на дисплей
+  displayMessage("Input pincode:", true, 0, 0); // Вывод сообщения на дисплей
   return keyboard();                           // Вызываем функцию keyboard() для ввода пинкода и одновременно возвращаем введенный пинкод
 }
