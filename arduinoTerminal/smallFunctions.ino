@@ -12,6 +12,6 @@ void displayMessage(  String message,  ///> message - сообщение для 
   {
     lcd.clear();
   }                                         
-  lcd.setCursor(rows,cols);            // Установка курсора на дисплее для последующего ввода символов.                                   
+  lcd.setCursor(rows, cols);            // Установка курсора на дисплее для последующего ввода символов.                                   
   lcd.print(message);                  // Вывод сообщения на дисплей.                                      
 }
