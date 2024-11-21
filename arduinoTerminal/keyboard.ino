@@ -19,7 +19,7 @@ String keyboard()
         lcd.setCursor(cursorPointer, 1);                    // Устанавливаем курсор на начало второй строки
         lcd.print(customKey);                               // Выводим на экран введеный символ пинкода
         cursorPointer++;                                    // Прибавляем в счетчик для перемещения курсора экрана
-        digits_String += customKey;                         // Добавляем в буффер введенный символ
+        digitsString += customKey;                         // Добавляем в буффер введенный символ
       }
 
       else if (customKey == KEY_STAR)                       // Если нажата на клавиатуре "*", то происходит удаление введенного последнего символа на экране
@@ -28,12 +28,12 @@ String keyboard()
         {
           lcd.setCursor(cursorPointer--, 1);                // Установка курсора на место последнего введенного символа
           lcd.print(" ");                                   // Заменяем последний введеный символ пустотой
-          digits_String.remove(digits_String.length() - 1);   // Удаляем из буффера последний введный символ
+          digitsString.remove(digitsString.length() - 1);   // Удаляем из буффера последний введный символ
         }
       }
       else if(customKey == KEY_HASH)                        // Если нажата клавиша "#", то выходим из функции и  возвращаем буффер с цифрами
       {                            
-        return digits_String;
+        return digitsString;
       }                            
     }
   }
