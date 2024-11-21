@@ -5,19 +5,23 @@
 #include <SPI.h>
 #include <MFRC522.h>
 
-const int ROWS = 4; // Число строк клавиатуры
-const int COLS = 3; // Число столбцов клавиатуры
+struct keyboard
+{
+  const int ROWS = 4; // Число строк клавиатуры
+  const int COLS = 3; // Число столбцов клавиатуры
+  const char KEY_STAR = 0x2a; // Символ "*"
+  const char KEY_HASH = 0x23; // Символ "#"
+}
+
 const int RST_PIN = 9; // Пин rfid модуля RST (RFID_Modul.ino)
 const int SS_PIN = 10; // Пин rfid модуля SS  (RFID_Modul.ino)
 const int PIN_LENGTH = 4; // Длина пинкода (handlePinInput.ino)
-const char KEY_STAR = 0x2a; // Символ "*"
-const char KEY_HASH = 0x23; // Символ "#"
 
 MFRC522 rfid(SS_PIN, RST_PIN);   // Объект rfid модуля
 MFRC522::MIFARE_Key key;         // Объект ключа
 MFRC522::StatusCode status;      // Объект статуса
 
-char hexaKeys[ROWS][COLS] = { // Масив символов из которых состоит клавиатура терминала
+char hexaKeys[keyboard.ROWS][keyboard.COLS] = { // Масив символов из которых состоит клавиатура терминала
   {'1','2','3'},
   {'4','5','6'},
   {'7','8','9'},
