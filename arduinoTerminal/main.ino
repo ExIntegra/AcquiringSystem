@@ -11,7 +11,13 @@ struct keyboard
   const int COLS = 3; // Число столбцов клавиатуры
   const char KEY_STAR = 0x2a; // Символ "*"
   const char KEY_HASH = 0x23; // Символ "#"
-}
+  char hexaKeys[keyboard.ROWS][keyboard.COLS] = { // Масив символов из которых состоит клавиатура терминала
+  {'1','2','3'},
+  {'4','5','6'},
+  {'7','8','9'},
+  {'*','0','#'}
+  };
+};
 
 const int RST_PIN = 9; // Пин rfid модуля RST (RFID_Modul.ino)
 const int SS_PIN = 10; // Пин rfid модуля SS  (RFID_Modul.ino)
@@ -21,19 +27,12 @@ MFRC522 rfid(SS_PIN, RST_PIN);   // Объект rfid модуля
 MFRC522::MIFARE_Key key;         // Объект ключа
 MFRC522::StatusCode status;      // Объект статуса
 
-char hexaKeys[keyboard.ROWS][keyboard.COLS] = { // Масив символов из которых состоит клавиатура терминала
-  {'1','2','3'},
-  {'4','5','6'},
-  {'7','8','9'},
-  {'*','0','#'}
-};
-
-byte rowPins[ROWS] = {8, 7, 6, 5};          // К каким выводам подключаем управление строками
-byte colPins[COLS] = {4, 3, 2};             // К каким выводам подключаем управление столбцами
+byte rowPins[keyboard.ROWS] = {8, 7, 6, 5};          // К каким выводам подключаем управление строками
+byte colPins[keyboard.COLS] = {4, 3, 2};             // К каким выводам подключаем управление столбцами
 
 
 LiquidCrystal_I2C lcd(0x27, 16, 2); //
-Keypad customKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS); //
+Keypad customKeypad = Keypad(makeKeymap(keyboard.hexaKeys), rowPins, colPins, keyboard.ROWS, keyboard.COLS); //
 
 void setup()
 {
