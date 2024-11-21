@@ -4,6 +4,7 @@
 
 String rfidCart()
 {
+  int UIDsize = 4;                                // 4 - 
   String uidString = "0x";                        // UID карты в формате HEX
   while(true)                                     // Бесконечный цикл, пока карта не будет считана
   {
