@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InterFaceModul
+namespace InterFaceModul.Models
 {
     internal class Requisites
     {
@@ -16,8 +16,8 @@ namespace InterFaceModul
 
         public Requisites(int balance, int account)
         {
-            this.Balalce = balance;
-            this.Account = account;
+            Balalce = balance;
+            Account = account;
         }
     }
 }

@@ -6,7 +6,6 @@ namespace InterFaceModul
 {
     public partial class Form1 : Form
     {
-        private SerialPort port;
 
         public Form1() //конструктор
         {
@@ -34,7 +33,7 @@ namespace InterFaceModul
             textBox1.ScrollToCaret();  //прокручивает текст так, чтобы была видна текущая позиция курсора // и перемешашет курсор в конец
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object? sender, EventArgs e)
         {
             if (port.IsOpen && port.BytesToRead > 0)
             {
@@ -79,10 +78,10 @@ namespace InterFaceModul
                 {
                     port.Close();
                     LogMessage("Порт закрыт");
-                    timer1.Stop();                   
+                    timer1.Stop();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LogMessage(ex.ToString());
                 LogMessage("Не удалось открыть порт");
@@ -105,6 +104,12 @@ namespace InterFaceModul
                 LogMessage(ex.ToString());
                 LogMessage("Не удалось закрыт порт");
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+           Form addedClient = new AddedClient();
+           addedClient.ShowDialog();
         }
     }
 }

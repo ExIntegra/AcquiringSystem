@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InterFaceModul
+namespace InterFaceModul.Models
 {
     internal class Person
     {
@@ -17,18 +17,18 @@ namespace InterFaceModul
         public string Phone { get; }
         public string Address { get; }
         public DateTime DateOfBirth { get; }
-        public string Email {  get; }
+        public string Email { get; }
 
         public Person(string firstName, string lastName, string middleName, string age, string inn, string phone, string address, DateTime dateOfBirth, string Email)
         {
-            this.FirstName = firstName;
-            this.LastName = lastName;
-            this.MiddleName = middleName;
-            this.Age = age;
-            this.INN = inn;
-            this.Phone = phone;
-            this.Address = address;
-            this.DateOfBirth = dateOfBirth;
+            FirstName = firstName;
+            LastName = lastName;
+            MiddleName = middleName;
+            Age = age;
+            INN = inn;
+            Phone = phone;
+            Address = address;
+            DateOfBirth = dateOfBirth;
             this.Email = Email;
         }
     }
