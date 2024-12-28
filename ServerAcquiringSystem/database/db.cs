@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using InterFaceModul.database.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic.ApplicationServices;
 
 namespace InterFaceModul
 {
     public class ApplicationContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
+        public DbSet<Person> Persons { get; set; }
 
         public ApplicationContext()
         {
