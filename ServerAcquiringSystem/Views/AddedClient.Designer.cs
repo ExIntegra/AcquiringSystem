@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             InfoForClientGroupBox = new GroupBox();
+            middleNameInput = new TextBox();
+            middleNameLabel = new Label();
             emailInput = new TextBox();
             email = new Label();
             phoneInput = new TextBox();
             AgeInput = new TextBox();
             DateOfBirthInput = new TextBox();
             AdressInput = new TextBox();
-            pasportInput = new TextBox();
+            passInput = new TextBox();
             INNInput = new TextBox();
             lastNameInput = new TextBox();
             nameInput = new TextBox();
@@ -58,8 +60,6 @@
             AccountLabel = new Label();
             addClientButton = new Button();
             CancelClient = new Button();
-            middleNameInput = new TextBox();
-            middleNameLabel = new Label();
             InfoForClientGroupBox.SuspendLayout();
             infoForAccountClient.SuspendLayout();
             SuspendLayout();
@@ -74,7 +74,7 @@
             InfoForClientGroupBox.Controls.Add(AgeInput);
             InfoForClientGroupBox.Controls.Add(DateOfBirthInput);
             InfoForClientGroupBox.Controls.Add(AdressInput);
-            InfoForClientGroupBox.Controls.Add(pasportInput);
+            InfoForClientGroupBox.Controls.Add(passInput);
             InfoForClientGroupBox.Controls.Add(INNInput);
             InfoForClientGroupBox.Controls.Add(lastNameInput);
             InfoForClientGroupBox.Controls.Add(nameInput);
@@ -93,6 +93,22 @@
             InfoForClientGroupBox.TabIndex = 5;
             InfoForClientGroupBox.TabStop = false;
             InfoForClientGroupBox.Text = "Данные о клиенте";
+            // 
+            // middleNameInput
+            // 
+            middleNameInput.Location = new Point(131, 162);
+            middleNameInput.Name = "middleNameInput";
+            middleNameInput.Size = new Size(186, 31);
+            middleNameInput.TabIndex = 27;
+            // 
+            // middleNameLabel
+            // 
+            middleNameLabel.AutoSize = true;
+            middleNameLabel.Location = new Point(20, 165);
+            middleNameLabel.Name = "middleNameLabel";
+            middleNameLabel.Size = new Size(88, 25);
+            middleNameLabel.TabIndex = 26;
+            middleNameLabel.Text = "Отчество";
             // 
             // emailInput
             // 
@@ -138,12 +154,12 @@
             AdressInput.Size = new Size(392, 31);
             AdressInput.TabIndex = 20;
             // 
-            // pasportInput
+            // passInput
             // 
-            pasportInput.Location = new Point(135, 263);
-            pasportInput.Name = "pasportInput";
-            pasportInput.Size = new Size(186, 31);
-            pasportInput.TabIndex = 19;
+            passInput.Location = new Point(135, 263);
+            passInput.Name = "passInput";
+            passInput.Size = new Size(186, 31);
+            passInput.TabIndex = 19;
             // 
             // INNInput
             // 
@@ -340,22 +356,6 @@
             CancelClient.UseVisualStyleBackColor = true;
             CancelClient.Click += CancelClient_Click;
             // 
-            // middleNameInput
-            // 
-            middleNameInput.Location = new Point(131, 162);
-            middleNameInput.Name = "middleNameInput";
-            middleNameInput.Size = new Size(186, 31);
-            middleNameInput.TabIndex = 27;
-            // 
-            // middleNameLabel
-            // 
-            middleNameLabel.AutoSize = true;
-            middleNameLabel.Location = new Point(20, 165);
-            middleNameLabel.Name = "middleNameLabel";
-            middleNameLabel.Size = new Size(88, 25);
-            middleNameLabel.TabIndex = 26;
-            middleNameLabel.Text = "Отчество";
-            // 
             // AddedClient
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -395,7 +395,7 @@
         private TextBox AgeInput;
         private TextBox DateOfBirthInput;
         private TextBox AdressInput;
-        private TextBox pasportInput;
+        private TextBox passInput;
         private TextBox INNInput;
         private TextBox lastNameInput;
         private TextBox nameInput;

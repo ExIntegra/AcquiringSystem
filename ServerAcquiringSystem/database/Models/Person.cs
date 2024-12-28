@@ -14,9 +14,9 @@ namespace InterFaceModul.database.Models
         public string MiddleName { get; set; }
         public string Age { get; set; }
         public string INN { get; set; }
+        public string Pass { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
-        public DateTime DateOfBirth { get; set; }
         public string Email { get; set; }
     }
 }
