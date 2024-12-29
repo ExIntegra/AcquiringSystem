@@ -13,11 +13,5 @@ namespace InterFaceModul.database.Models
         public int Pincode { get; }
         public int Account { get; }
         public int Balalce { get; }
-
-        public Requisites(int balance, int account)
-        {
-            Balalce = balance;
-            Account = account;
-        }
     }
 }

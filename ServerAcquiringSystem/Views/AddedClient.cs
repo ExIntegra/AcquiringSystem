@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -25,8 +26,9 @@ namespace InterFaceModul
 
         private void addClientButton_Click(object sender, EventArgs e)
         {
+            var validationResults = new List<ValidationResult>();
             ApplicationContext context = new ApplicationContext();
-            context.Add(new Person()
+            Person person = new Person()
             {
                 FirstName = nameInput.Text,
                 LastName = lastNameInput.Text,
@@ -36,7 +38,26 @@ namespace InterFaceModul
                 Email = emailInput.Text,
                 Age = AgeInput.Text,
                 INN = INNInput.Text
-            });
+            };
+
+            var validationContext = new ValidationContext(person);
+            bool isValid = Validator.TryValidateObject(person, validationContext, validationResults, true);
+
+            if (!isValid)
+            {
+                StringBuilder errorMessage = new StringBuilder("Please correct the following errors:\n");
+                foreach (var validationResult in validationResults)
+                {
+                    errorMessage.AppendLine(validationResult.ErrorMessage);
+                }
+                MessageBox.Show(errorMessage.ToString(), "Validation Errors", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            else
+            {
+                context.Add(person);
+            }
+
         }
     }
 }
