@@ -1,4 +1,6 @@
-﻿using InterFaceModul.database.Models;
+﻿using InterFaceModul.database.AppContext;
+using InterFaceModul.database.Models;
+using InterFaceModul.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,17 +8,52 @@ using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace InterFaceModul
 {
     public partial class AddedClient : Form
     {
+        private DatabaseServise _databaseService;
+        private Person selectedPerson;
+        bool Add = false;
+
         public AddedClient()
         {
+
             InitializeComponent();
+        }
+
+        public AddedClient(DatabaseServise databaseService)
+        {
+            InitializeComponent();
+            _databaseService = databaseService;
+            Add=true;
+            addClientButton.Text = "Добавить";
+        }
+        public AddedClient(DatabaseServise databaseService,int Selectedindex)
+        {
+            Add = false;
+            InitializeComponent();
+            _databaseService =databaseService;
+            selectedPerson = new Person();
+            selectedPerson= databaseService.GetPersonById(Selectedindex);
+            nameInput.Text = selectedPerson.FirstName;
+            lastNameInput.Text = selectedPerson.LastName;
+            middleNameInput.Text = selectedPerson.MiddleName;
+            passInput.Text = selectedPerson.Pass;
+            phoneInput.Text = selectedPerson.Phone;
+            emailInput.Text = selectedPerson.Email;
+            AgeInput.Text = selectedPerson.Age;
+            AdressInput.Text = selectedPerson.Address;
+            INNInput.Text = selectedPerson.INN;
+
+            addClientButton.Text = "Изменить";
+            // Photo = "";
         }
 
         private void CancelClient_Click(object sender, EventArgs e)
@@ -27,7 +64,7 @@ namespace InterFaceModul
         private void addClientButton_Click(object sender, EventArgs e)
         {
             var validationResults = new List<ValidationResult>();
-            ApplicationContext context = new ApplicationContext();
+            LocalDbContext context = new LocalDbContext();
             Person person = new Person()
             {
                 FirstName = nameInput.Text,
@@ -37,7 +74,9 @@ namespace InterFaceModul
                 Phone = phoneInput.Text,
                 Email = emailInput.Text,
                 Age = AgeInput.Text,
-                INN = INNInput.Text
+                Address = AdressInput.Text,
+                INN = INNInput.Text,
+                Photo = "",
             };
 
             var validationContext = new ValidationContext(person);
@@ -55,7 +94,15 @@ namespace InterFaceModul
 
             else
             {
-                context.Add(person);
+                if (Add == true)
+                    _databaseService.Add(person);
+                else
+                {
+                    person.Id= selectedPerson.Id;
+                    _databaseService.Update(person,selectedPerson.Id);
+                }
+                Close();
+
             }
 
         }

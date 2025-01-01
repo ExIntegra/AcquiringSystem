@@ -21,7 +21,7 @@ namespace InterFaceModul.database.Models
 
         public string Age { get; set; }
 
-        [Required(ErrorMessage = "Enter Name")]
+        [Required(ErrorMessage = "Enter INN")]
         public string INN { get; set; }
 
         [Required(ErrorMessage = "Enter Name")]
@@ -32,5 +32,6 @@ namespace InterFaceModul.database.Models
         public string Address { get; set; }
 
         public string Email { get; set; }
+        public string Photo {  get; set; }
     }
 }

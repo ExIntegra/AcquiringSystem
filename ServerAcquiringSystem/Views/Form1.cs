@@ -1,3 +1,5 @@
+using InterFaceModul.database.AppContext;
+using InterFaceModul.Services;
 using System;
 using System.IO.Ports;
 using System.Windows.Forms;
@@ -6,9 +8,13 @@ namespace InterFaceModul
 {
     public partial class Form1 : Form
     {
+        LocalDbContext _context;
+        DatabaseServise databaseService;
 
         public Form1() //конструктор
         {
+            _context = new LocalDbContext();
+            databaseService = new DatabaseServise(_context);
             InitializeComponent();
             port = new SerialPort("COM256", 9600, Parity.None, 8, StopBits.One); //предупреждение NULL
             port.ReadTimeout = 2000;
@@ -106,10 +112,56 @@ namespace InterFaceModul
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        //private void button2_Click(object sender, EventArgs e)
+        //{
+        //    Form addedClient = new AddedClient(databaseService);
+        //    addedClient.ShowDialog();
+        //}
+
+        //private void button3_Click(object sender, EventArgs e)
+        //{
+
+        //}
+
+        private void EditButtonClick(object sender, EventArgs e)
         {
-           Form addedClient = new AddedClient();
-           addedClient.ShowDialog();
+            Form addedClient = new AddedClient(databaseService, listBox1.SelectedIndex);
+            addedClient.ShowDialog();
+        }
+
+        private void AddClientButtonClick(object sender, EventArgs e)
+        {
+            Form addedClient = new AddedClient(databaseService);
+            addedClient.ShowDialog();
+        }
+
+        private void ReloadForm(object sender, EventArgs e)
+        {
+            listBox1.BeginUpdate();
+
+            //    listBox1.DataSource = databaseService.GetAllClients();
+
+            listBox1.EndUpdate();
+        }
+
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            listBox1.BeginUpdate();
+
+            var data = databaseService.GetAllClientsPass();
+            foreach (var item in data)
+            {
+                listBox1.Items.Add(item);
+            }
+
+            listBox1.EndUpdate();
+        }
+
+        private void DoubleClickListBox(object sender, EventArgs e)
+        {
+            Form addedClient = new AddedClient(databaseService, listBox1.SelectedIndex);
+            addedClient.ShowDialog();
         }
     }
 }

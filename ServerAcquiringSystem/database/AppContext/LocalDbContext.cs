@@ -2,20 +2,24 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic.ApplicationServices;
 
-namespace InterFaceModul
+namespace InterFaceModul.database.AppContext
 {
-    public class ApplicationContext : DbContext
+    // EntityFrameWork с локальной БД, реализованной в Visual studio
+    public class LocalDbContext : DbContext
     {
-        public DbSet<Person> Persons { get; set; }
+        public DbSet<Person> persons { get; set; }// => Set<Person>();
 
-        public ApplicationContext()
+        public LocalDbContext()
         {
+
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=helloappdb;Trusted_Connection=True;");
+
         }
     }
 }

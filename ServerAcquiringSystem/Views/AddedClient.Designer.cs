@@ -60,6 +60,7 @@
             AccountLabel = new Label();
             addClientButton = new Button();
             CancelClient = new Button();
+            openFileDialog1 = new OpenFileDialog();
             InfoForClientGroupBox.SuspendLayout();
             infoForAccountClient.SuspendLayout();
             SuspendLayout();
@@ -87,106 +88,122 @@
             InfoForClientGroupBox.Controls.Add(INNLabel);
             InfoForClientGroupBox.Controls.Add(lastnameLabel);
             InfoForClientGroupBox.Controls.Add(nameLabel);
-            InfoForClientGroupBox.Location = new Point(12, 12);
+            InfoForClientGroupBox.Location = new Point(8, 7);
+            InfoForClientGroupBox.Margin = new Padding(2);
             InfoForClientGroupBox.Name = "InfoForClientGroupBox";
-            InfoForClientGroupBox.Size = new Size(503, 568);
+            InfoForClientGroupBox.Padding = new Padding(2);
+            InfoForClientGroupBox.Size = new Size(352, 341);
             InfoForClientGroupBox.TabIndex = 5;
             InfoForClientGroupBox.TabStop = false;
             InfoForClientGroupBox.Text = "Данные о клиенте";
             // 
             // middleNameInput
             // 
-            middleNameInput.Location = new Point(131, 162);
+            middleNameInput.Location = new Point(92, 97);
+            middleNameInput.Margin = new Padding(2);
             middleNameInput.Name = "middleNameInput";
-            middleNameInput.Size = new Size(186, 31);
+            middleNameInput.Size = new Size(131, 23);
             middleNameInput.TabIndex = 27;
             // 
             // middleNameLabel
             // 
             middleNameLabel.AutoSize = true;
-            middleNameLabel.Location = new Point(20, 165);
+            middleNameLabel.Location = new Point(14, 99);
+            middleNameLabel.Margin = new Padding(2, 0, 2, 0);
             middleNameLabel.Name = "middleNameLabel";
-            middleNameLabel.Size = new Size(88, 25);
+            middleNameLabel.Size = new Size(58, 15);
             middleNameLabel.TabIndex = 26;
             middleNameLabel.Text = "Отчество";
             // 
             // emailInput
             // 
-            emailInput.Location = new Point(111, 495);
+            emailInput.Location = new Point(78, 297);
+            emailInput.Margin = new Padding(2);
             emailInput.Name = "emailInput";
-            emailInput.Size = new Size(189, 31);
+            emailInput.Size = new Size(134, 23);
             emailInput.TabIndex = 25;
             // 
             // email
             // 
             email.AutoSize = true;
-            email.Location = new Point(24, 495);
+            email.Location = new Point(17, 297);
+            email.Margin = new Padding(2, 0, 2, 0);
             email.Name = "email";
-            email.Size = new Size(54, 25);
+            email.Size = new Size(36, 15);
             email.TabIndex = 24;
             email.Text = "email";
             // 
             // phoneInput
             // 
-            phoneInput.Location = new Point(106, 444);
+            phoneInput.Location = new Point(74, 266);
+            phoneInput.Margin = new Padding(2);
             phoneInput.Name = "phoneInput";
-            phoneInput.Size = new Size(189, 31);
+            phoneInput.Size = new Size(134, 23);
             phoneInput.TabIndex = 23;
             // 
             // AgeInput
             // 
-            AgeInput.Location = new Point(106, 397);
+            AgeInput.Location = new Point(74, 238);
+            AgeInput.Margin = new Padding(2);
             AgeInput.Name = "AgeInput";
-            AgeInput.Size = new Size(48, 31);
+            AgeInput.Size = new Size(35, 23);
             AgeInput.TabIndex = 22;
             // 
             // DateOfBirthInput
             // 
-            DateOfBirthInput.Location = new Point(170, 349);
+            DateOfBirthInput.Location = new Point(119, 209);
+            DateOfBirthInput.Margin = new Padding(2);
             DateOfBirthInput.Name = "DateOfBirthInput";
-            DateOfBirthInput.Size = new Size(151, 31);
+            DateOfBirthInput.Size = new Size(107, 23);
             DateOfBirthInput.TabIndex = 21;
             // 
             // AdressInput
             // 
-            AdressInput.Location = new Point(92, 306);
+            AdressInput.Location = new Point(64, 184);
+            AdressInput.Margin = new Padding(2);
             AdressInput.Name = "AdressInput";
-            AdressInput.Size = new Size(392, 31);
+            AdressInput.Size = new Size(276, 23);
             AdressInput.TabIndex = 20;
             // 
             // passInput
             // 
-            passInput.Location = new Point(135, 263);
+            passInput.Location = new Point(94, 158);
+            passInput.Margin = new Padding(2);
             passInput.Name = "passInput";
-            passInput.Size = new Size(186, 31);
+            passInput.Size = new Size(131, 23);
             passInput.TabIndex = 19;
             // 
             // INNInput
             // 
-            INNInput.Location = new Point(135, 212);
+            INNInput.Location = new Point(94, 127);
+            INNInput.Margin = new Padding(2);
             INNInput.Name = "INNInput";
-            INNInput.Size = new Size(186, 31);
+            INNInput.Size = new Size(131, 23);
             INNInput.TabIndex = 18;
             // 
             // lastNameInput
             // 
-            lastNameInput.Location = new Point(135, 112);
+            lastNameInput.Location = new Point(94, 67);
+            lastNameInput.Margin = new Padding(2);
             lastNameInput.Name = "lastNameInput";
-            lastNameInput.Size = new Size(186, 31);
+            lastNameInput.Size = new Size(131, 23);
             lastNameInput.TabIndex = 17;
             // 
             // nameInput
             // 
-            nameInput.Location = new Point(135, 64);
+            nameInput.Location = new Point(94, 38);
+            nameInput.Margin = new Padding(2);
             nameInput.Name = "nameInput";
-            nameInput.Size = new Size(186, 31);
+            nameInput.Size = new Size(131, 23);
             nameInput.TabIndex = 5;
             // 
             // photoGroupBox
             // 
-            photoGroupBox.Location = new Point(355, 30);
+            photoGroupBox.Location = new Point(248, 18);
+            photoGroupBox.Margin = new Padding(2);
             photoGroupBox.Name = "photoGroupBox";
-            photoGroupBox.Size = new Size(142, 150);
+            photoGroupBox.Padding = new Padding(2);
+            photoGroupBox.Size = new Size(99, 90);
             photoGroupBox.TabIndex = 16;
             photoGroupBox.TabStop = false;
             photoGroupBox.Text = "Фото";
@@ -194,72 +211,80 @@
             // phoneLabel
             // 
             phoneLabel.AutoSize = true;
-            phoneLabel.Location = new Point(24, 447);
+            phoneLabel.Location = new Point(17, 268);
+            phoneLabel.Margin = new Padding(2, 0, 2, 0);
             phoneLabel.Name = "phoneLabel";
-            phoneLabel.Size = new Size(81, 25);
+            phoneLabel.Size = new Size(55, 15);
             phoneLabel.TabIndex = 14;
             phoneLabel.Text = "Телефон";
             // 
             // ageLabel
             // 
             ageLabel.AutoSize = true;
-            ageLabel.Location = new Point(24, 400);
+            ageLabel.Location = new Point(17, 240);
+            ageLabel.Margin = new Padding(2, 0, 2, 0);
             ageLabel.Name = "ageLabel";
-            ageLabel.Size = new Size(76, 25);
+            ageLabel.Size = new Size(50, 15);
             ageLabel.TabIndex = 6;
             ageLabel.Text = "Возраст";
             // 
             // DateOfBirthLabel
             // 
             DateOfBirthLabel.AutoSize = true;
-            DateOfBirthLabel.Location = new Point(24, 352);
+            DateOfBirthLabel.Location = new Point(17, 211);
+            DateOfBirthLabel.Margin = new Padding(2, 0, 2, 0);
             DateOfBirthLabel.Name = "DateOfBirthLabel";
-            DateOfBirthLabel.Size = new Size(140, 25);
+            DateOfBirthLabel.Size = new Size(92, 15);
             DateOfBirthLabel.TabIndex = 5;
             DateOfBirthLabel.Text = "День рождения";
             // 
             // AddressLabel
             // 
             AddressLabel.AutoSize = true;
-            AddressLabel.Location = new Point(24, 306);
+            AddressLabel.Location = new Point(17, 184);
+            AddressLabel.Margin = new Padding(2, 0, 2, 0);
             AddressLabel.Name = "AddressLabel";
-            AddressLabel.Size = new Size(62, 25);
+            AddressLabel.Size = new Size(40, 15);
             AddressLabel.TabIndex = 4;
             AddressLabel.Text = "Адрес";
             // 
             // pasportLabel
             // 
             pasportLabel.AutoSize = true;
-            pasportLabel.Location = new Point(24, 263);
+            pasportLabel.Location = new Point(17, 158);
+            pasportLabel.Margin = new Padding(2, 0, 2, 0);
             pasportLabel.Name = "pasportLabel";
-            pasportLabel.Size = new Size(81, 25);
+            pasportLabel.Size = new Size(54, 15);
             pasportLabel.TabIndex = 3;
             pasportLabel.Text = "Паспорт";
             // 
             // INNLabel
             // 
             INNLabel.AutoSize = true;
-            INNLabel.Location = new Point(24, 218);
+            INNLabel.Location = new Point(17, 131);
+            INNLabel.Margin = new Padding(2, 0, 2, 0);
             INNLabel.Name = "INNLabel";
-            INNLabel.Size = new Size(51, 25);
+            INNLabel.Size = new Size(34, 15);
             INNLabel.TabIndex = 2;
             INNLabel.Text = "ИНН";
             // 
             // lastnameLabel
             // 
             lastnameLabel.AutoSize = true;
-            lastnameLabel.Location = new Point(20, 112);
+            lastnameLabel.Location = new Point(14, 67);
+            lastnameLabel.Margin = new Padding(2, 0, 2, 0);
             lastnameLabel.Name = "lastnameLabel";
-            lastnameLabel.Size = new Size(85, 25);
+            lastnameLabel.Size = new Size(58, 15);
             lastnameLabel.TabIndex = 1;
             lastnameLabel.Text = "Фамилия";
             // 
             // nameLabel
             // 
             nameLabel.AutoSize = true;
-            nameLabel.Location = new Point(24, 64);
+            nameLabel.Location = new Point(17, 38);
+            nameLabel.Margin = new Padding(2, 0, 2, 0);
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(47, 25);
+            nameLabel.Size = new Size(31, 15);
             nameLabel.TabIndex = 0;
             nameLabel.Text = "Имя";
             // 
@@ -272,39 +297,46 @@
             infoForAccountClient.Controls.Add(pincodeLabel);
             infoForAccountClient.Controls.Add(balanceLabel);
             infoForAccountClient.Controls.Add(AccountLabel);
-            infoForAccountClient.Location = new Point(558, 20);
+            infoForAccountClient.Location = new Point(391, 12);
+            infoForAccountClient.Margin = new Padding(2);
             infoForAccountClient.Name = "infoForAccountClient";
-            infoForAccountClient.Size = new Size(477, 568);
+            infoForAccountClient.Padding = new Padding(2);
+            infoForAccountClient.Size = new Size(334, 341);
             infoForAccountClient.TabIndex = 6;
             infoForAccountClient.TabStop = false;
             infoForAccountClient.Text = "Информация о счете";
             // 
             // textBox11
             // 
-            textBox11.Location = new Point(103, 60);
+            textBox11.Location = new Point(72, 36);
+            textBox11.Margin = new Padding(2);
             textBox11.Name = "textBox11";
-            textBox11.Size = new Size(186, 31);
+            textBox11.Size = new Size(131, 23);
             textBox11.TabIndex = 8;
             // 
             // textBox10
             // 
-            textBox10.Location = new Point(103, 138);
+            textBox10.Location = new Point(72, 83);
+            textBox10.Margin = new Padding(2);
             textBox10.Name = "textBox10";
-            textBox10.Size = new Size(186, 31);
+            textBox10.Size = new Size(131, 23);
             textBox10.TabIndex = 7;
             // 
             // textBox9
             // 
-            textBox9.Location = new Point(103, 101);
+            textBox9.Location = new Point(72, 61);
+            textBox9.Margin = new Padding(2);
             textBox9.Name = "textBox9";
-            textBox9.Size = new Size(186, 31);
+            textBox9.Size = new Size(131, 23);
             textBox9.TabIndex = 6;
             // 
             // accounts
             // 
-            accounts.Location = new Point(36, 311);
+            accounts.Location = new Point(25, 187);
+            accounts.Margin = new Padding(2);
             accounts.Name = "accounts";
-            accounts.Size = new Size(421, 243);
+            accounts.Padding = new Padding(2);
+            accounts.Size = new Size(295, 146);
             accounts.TabIndex = 4;
             accounts.TabStop = false;
             accounts.Text = "Другие счета:";
@@ -312,35 +344,39 @@
             // pincodeLabel
             // 
             pincodeLabel.AutoSize = true;
-            pincodeLabel.Location = new Point(22, 138);
+            pincodeLabel.Location = new Point(15, 83);
+            pincodeLabel.Margin = new Padding(2, 0, 2, 0);
             pincodeLabel.Name = "pincodeLabel";
-            pincodeLabel.Size = new Size(75, 25);
+            pincodeLabel.Size = new Size(49, 15);
             pincodeLabel.TabIndex = 3;
             pincodeLabel.Text = "Пинкод";
             // 
             // balanceLabel
             // 
             balanceLabel.AutoSize = true;
-            balanceLabel.Location = new Point(24, 100);
+            balanceLabel.Location = new Point(17, 60);
+            balanceLabel.Margin = new Padding(2, 0, 2, 0);
             balanceLabel.Name = "balanceLabel";
-            balanceLabel.Size = new Size(67, 25);
+            balanceLabel.Size = new Size(46, 15);
             balanceLabel.TabIndex = 2;
             balanceLabel.Text = "Баланс";
             // 
             // AccountLabel
             // 
             AccountLabel.AutoSize = true;
-            AccountLabel.Location = new Point(24, 60);
+            AccountLabel.Location = new Point(17, 36);
+            AccountLabel.Margin = new Padding(2, 0, 2, 0);
             AccountLabel.Name = "AccountLabel";
-            AccountLabel.Size = new Size(49, 25);
+            AccountLabel.Size = new Size(33, 15);
             AccountLabel.TabIndex = 1;
             AccountLabel.Text = "Счет";
             // 
             // addClientButton
             // 
-            addClientButton.Location = new Point(339, 613);
+            addClientButton.Location = new Point(237, 357);
+            addClientButton.Margin = new Padding(2);
             addClientButton.Name = "addClientButton";
-            addClientButton.Size = new Size(112, 34);
+            addClientButton.Size = new Size(78, 31);
             addClientButton.TabIndex = 7;
             addClientButton.Text = "Добавить";
             addClientButton.UseVisualStyleBackColor = true;
@@ -348,24 +384,31 @@
             // 
             // CancelClient
             // 
-            CancelClient.Location = new Point(519, 613);
+            CancelClient.Location = new Point(363, 357);
+            CancelClient.Margin = new Padding(2);
             CancelClient.Name = "CancelClient";
-            CancelClient.Size = new Size(112, 34);
+            CancelClient.Size = new Size(78, 31);
             CancelClient.TabIndex = 8;
             CancelClient.Text = "Отмена";
             CancelClient.UseVisualStyleBackColor = true;
             CancelClient.Click += CancelClient_Click;
             // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
+            // 
             // AddedClient
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1107, 659);
+            ClientSize = new Size(775, 395);
             Controls.Add(CancelClient);
             Controls.Add(addClientButton);
             Controls.Add(infoForAccountClient);
             Controls.Add(InfoForClientGroupBox);
+            Margin = new Padding(2);
             Name = "AddedClient";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "AddedClient";
             InfoForClientGroupBox.ResumeLayout(false);
             InfoForClientGroupBox.PerformLayout();
@@ -408,5 +451,6 @@
         private Label email;
         private TextBox middleNameInput;
         private Label middleNameLabel;
+        private OpenFileDialog openFileDialog1;
     }
 }
