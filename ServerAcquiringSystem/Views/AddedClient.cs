@@ -18,7 +18,7 @@ namespace InterFaceModul
 {
     public partial class AddedClient : Form
     {
-        private DatabaseServise _databaseService;
+        private DatabaseService _databaseService;
         private Person selectedPerson;
         bool Add = false;
 
@@ -28,14 +28,14 @@ namespace InterFaceModul
             InitializeComponent();
         }
 
-        public AddedClient(DatabaseServise databaseService)
+        public AddedClient(DatabaseService databaseService)
         {
             InitializeComponent();
             _databaseService = databaseService;
             Add=true;
             addClientButton.Text = "Добавить";
         }
-        public AddedClient(DatabaseServise databaseService,int Selectedindex)
+        public AddedClient(DatabaseService databaseService,int Selectedindex)
         {
             Add = false;
             InitializeComponent();

@@ -10,13 +10,13 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace InterFaceModul.Services
 {
-    public class DatabaseServise
+    public class DatabaseService
     {
         private LocalDbContext _context; // локальная БД
         private Person _person;
 
 
-        public DatabaseServise(LocalDbContext context)
+        public DatabaseService(LocalDbContext context)
         {
             _context = context;
         }

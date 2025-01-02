@@ -9,12 +9,12 @@ namespace InterFaceModul
     public partial class Form1 : Form
     {
         LocalDbContext _context;
-        DatabaseServise databaseService;
+        DatabaseService databaseService;
 
         public Form1() //конструктор
         {
             _context = new LocalDbContext();
-            databaseService = new DatabaseServise(_context);
+            databaseService = new DatabaseService(_context);
             InitializeComponent();
             port = new SerialPort("COM256", 9600, Parity.None, 8, StopBits.One); //предупреждение NULL
             port.ReadTimeout = 2000;
@@ -132,16 +132,17 @@ namespace InterFaceModul
         private void AddClientButtonClick(object sender, EventArgs e)
         {
             Form addedClient = new AddedClient(databaseService);
+
             addedClient.ShowDialog();
         }
 
         private void ReloadForm(object sender, EventArgs e)
         {
-            listBox1.BeginUpdate();
+            //listBox1.BeginUpdate();
 
-            //    listBox1.DataSource = databaseService.GetAllClients();
+            ////    listBox1.DataSource = databaseService.GetAllClients();
 
-            listBox1.EndUpdate();
+            //listBox1.EndUpdate();
         }
 
         private void Form1_Activated(object sender, EventArgs e)
