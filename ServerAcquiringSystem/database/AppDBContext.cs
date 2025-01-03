@@ -6,8 +6,7 @@ namespace InterFaceModul
 {
     public class AppDBContext : DbContext
     {
-        public DbSet<Person> clients => Set<Person>();
-
+        public DbSet<Person> clients { get; set; }
         public AppDBContext()
         {
             Database.EnsureCreated();
