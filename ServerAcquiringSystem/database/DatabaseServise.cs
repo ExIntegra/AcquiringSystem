@@ -1,4 +1,5 @@
 ﻿using InterFaceModul.database.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,37 +8,61 @@ using System.Threading.Tasks;
 
 namespace InterFaceModul.database
 {
-    internal class DatabaseServise
+    public class DatabaseServise
     {
-        private ApplicationContext _context;
-        private Person _person;
+        private AppDBContext _context;
 
-        public DatabaseServise(ApplicationContext contex)
+        public DatabaseServise(AppDBContext context)
         {
-            _context = contex;
+            _context = context;
         }
 
-        public void TakeModels(Person person)
-        {   
-            _person = person;
+        public Person GetPersonById(int id)
+        {
+            var data = (from item in _context.clients
+                        where item.Id == (id + 1)
+                        select item).FirstOrDefault();
+            return data;
         }
 
-        public void Add()
+        public void Add(Person person)
         {
-            _context.Add(_person);
+            _context.Add(person);
             _context.SaveChanges();
         }
 
-        public void Delete() 
+        public List<string> GetAllClientsPass()
         {
-            _context.Remove(_person);
+            var data = from item in _context.clients
+                       select item.Pass;
+
+            return data.ToList();
+        }
+
+        public void Delete(Person person)
+        {
+            _context.Remove(person);
             _context.SaveChanges();
         }
 
-        public void Update()
+        public void Update(Person person)
         {
-            _context.Update(_person);
-            _context.SaveChanges();
+            var per = _context.clients.Find(person.Id);
+            if (per != null)
+            {
+                per.FirstName = person.FirstName;
+                per.LastName = person.LastName;
+                per.MiddleName = person.MiddleName;
+                per.Pass = person.Pass;
+                per.Phone = person.Phone;
+                per.Email = person.Email;
+                per.Age = person.Age;
+                per.Address = person.Address;
+                per.INN = person.INN;
+
+                _context.Update(per);
+                _context.SaveChanges();
+            }
         }
     }
 }

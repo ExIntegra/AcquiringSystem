@@ -4,11 +4,13 @@ using Microsoft.VisualBasic.ApplicationServices;
 
 namespace InterFaceModul
 {
-    public class ApplicationContext : DbContext
+    public class AppDBContext : DbContext
     {
         public DbSet<Person> Persons { get; set; }
 
-        public ApplicationContext()
+        public DbSet<Person> clients => Set<Person>();
+
+        public AppDBContext()
         {
             Database.EnsureCreated();
         }

@@ -32,17 +32,16 @@ namespace InterFaceModul
         {
             components = new System.ComponentModel.Container();
             toolTip = new ToolTip(components);
-            button4 = new Button();
-            button3 = new Button();
-            button2 = new Button();
-            button5 = new Button();
-            button6 = new Button();
-            groupBox1 = new GroupBox();
+            DeleteClientButton = new Button();
+            EditClientButton = new Button();
+            addedClientButton = new Button();
+            clearLogButton = new Button();
+            functionalGroupBox = new GroupBox();
             groupBox3 = new GroupBox();
-            textBox1 = new TextBox();
+            LogMessageTextBox = new TextBox();
             groupBox4 = new GroupBox();
-            radioButton2 = new RadioButton();
-            radioButton1 = new RadioButton();
+            ONTerminal = new RadioButton();
+            OFFTerminal = new RadioButton();
             timer1 = new System.Windows.Forms.Timer(components);
             InfoForClientGroupBox = new GroupBox();
             emailOutput = new Label();
@@ -57,7 +56,6 @@ namespace InterFaceModul
             nameLabelOutput = new Label();
             middleNameLabel = new Label();
             email = new Label();
-            photoGroupBox = new GroupBox();
             phoneLabel = new Label();
             ageLabel = new Label();
             DateOfBirthLabel = new Label();
@@ -74,134 +72,127 @@ namespace InterFaceModul
             pincodeLabel = new Label();
             balanceLabel = new Label();
             AccountLabel = new Label();
-            groupBox1.SuspendLayout();
+            listBoxClients = new ListBox();
+            groupBox2 = new GroupBox();
+            functionalGroupBox.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox4.SuspendLayout();
             InfoForClientGroupBox.SuspendLayout();
             infoForAccountClient.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
-            // button4
+            // DeleteClientButton
             // 
-            button4.BackColor = Color.FromArgb(255, 128, 128);
-            button4.Location = new Point(364, 63);
-            button4.Name = "button4";
-            button4.Size = new Size(112, 34);
-            button4.TabIndex = 3;
-            button4.Text = "Удалить";
-            toolTip.SetToolTip(button4, "Удалить клиента банка");
-            button4.UseVisualStyleBackColor = false;
+            DeleteClientButton.BackColor = Color.FromArgb(255, 128, 128);
+            DeleteClientButton.Location = new Point(364, 63);
+            DeleteClientButton.Name = "DeleteClientButton";
+            DeleteClientButton.Size = new Size(112, 34);
+            DeleteClientButton.TabIndex = 3;
+            DeleteClientButton.Text = "Удалить";
+            toolTip.SetToolTip(DeleteClientButton, "Удалить клиента банка");
+            DeleteClientButton.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // EditClientButton
             // 
-            button3.Location = new Point(178, 63);
-            button3.Name = "button3";
-            button3.Size = new Size(145, 34);
-            button3.TabIndex = 2;
-            button3.Text = "Редактировать";
-            toolTip.SetToolTip(button3, "Редактировать клиента банка");
-            button3.UseVisualStyleBackColor = true;
+            EditClientButton.Location = new Point(178, 63);
+            EditClientButton.Name = "EditClientButton";
+            EditClientButton.Size = new Size(145, 34);
+            EditClientButton.TabIndex = 2;
+            EditClientButton.Text = "Редактировать";
+            toolTip.SetToolTip(EditClientButton, "Редактировать клиента банка");
+            EditClientButton.UseVisualStyleBackColor = true;
+            EditClientButton.Click += EditClientButton_Click;
             // 
-            // button2
+            // addedClientButton
             // 
-            button2.Location = new Point(22, 63);
-            button2.Name = "button2";
-            button2.Size = new Size(112, 34);
-            button2.TabIndex = 1;
-            button2.Text = "Добавить";
-            toolTip.SetToolTip(button2, "Добавить нового клиента банка");
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            addedClientButton.Location = new Point(22, 63);
+            addedClientButton.Name = "addedClientButton";
+            addedClientButton.Size = new Size(112, 34);
+            addedClientButton.TabIndex = 1;
+            addedClientButton.Text = "Добавить";
+            toolTip.SetToolTip(addedClientButton, "Добавить нового клиента банка");
+            addedClientButton.UseVisualStyleBackColor = true;
+            addedClientButton.Click += addedClientButton_Click;
             // 
-            // button5
+            // clearLogButton
             // 
-            button5.Location = new Point(733, 621);
-            button5.Name = "button5";
-            button5.Size = new Size(147, 34);
-            button5.TabIndex = 2;
-            button5.Text = "Подробнее";
-            toolTip.SetToolTip(button5, "Вывести всю базу данных");
-            button5.UseVisualStyleBackColor = true;
+            clearLogButton.Location = new Point(136, 372);
+            clearLogButton.Name = "clearLogButton";
+            clearLogButton.Size = new Size(112, 34);
+            clearLogButton.TabIndex = 3;
+            clearLogButton.Text = "Очистить";
+            toolTip.SetToolTip(clearLogButton, "Очистить логи терминала");
+            clearLogButton.UseVisualStyleBackColor = true;
+            clearLogButton.Click += clearLogButton_Click;
             // 
-            // button6
+            // functionalGroupBox
             // 
-            button6.Location = new Point(192, 367);
-            button6.Name = "button6";
-            button6.Size = new Size(112, 34);
-            button6.TabIndex = 3;
-            button6.Text = "Очистить";
-            toolTip.SetToolTip(button6, "Очистить логи терминала");
-            button6.UseVisualStyleBackColor = true;
-            button6.Click += button6_Click;
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(button4);
-            groupBox1.Controls.Add(button3);
-            groupBox1.Controls.Add(button2);
-            groupBox1.Location = new Point(555, 661);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(501, 145);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Функционал";
+            functionalGroupBox.Controls.Add(DeleteClientButton);
+            functionalGroupBox.Controls.Add(EditClientButton);
+            functionalGroupBox.Controls.Add(addedClientButton);
+            functionalGroupBox.Location = new Point(454, 611);
+            functionalGroupBox.Name = "functionalGroupBox";
+            functionalGroupBox.Size = new Size(492, 145);
+            functionalGroupBox.TabIndex = 0;
+            functionalGroupBox.TabStop = false;
+            functionalGroupBox.Text = "Функционал";
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(textBox1);
-            groupBox3.Controls.Add(button6);
+            groupBox3.Controls.Add(LogMessageTextBox);
+            groupBox3.Controls.Add(clearLogButton);
             groupBox3.Location = new Point(17, 190);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(508, 429);
+            groupBox3.Size = new Size(418, 415);
             groupBox3.TabIndex = 0;
             groupBox3.TabStop = false;
             groupBox3.Text = "Логирование терминала";
             // 
-            // textBox1
+            // LogMessageTextBox
             // 
-            textBox1.Location = new Point(13, 30);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.ScrollBars = ScrollBars.Vertical;
-            textBox1.Size = new Size(474, 331);
-            textBox1.TabIndex = 0;
-            textBox1.WordWrap = false;
-            textBox1.TextChanged += textBox1_TextChanged;
+            LogMessageTextBox.Location = new Point(13, 30);
+            LogMessageTextBox.Multiline = true;
+            LogMessageTextBox.Name = "LogMessageTextBox";
+            LogMessageTextBox.ScrollBars = ScrollBars.Vertical;
+            LogMessageTextBox.Size = new Size(374, 331);
+            LogMessageTextBox.TabIndex = 0;
+            LogMessageTextBox.WordWrap = false;
             // 
             // groupBox4
             // 
-            groupBox4.Controls.Add(radioButton2);
-            groupBox4.Controls.Add(radioButton1);
+            groupBox4.Controls.Add(ONTerminal);
+            groupBox4.Controls.Add(OFFTerminal);
             groupBox4.Location = new Point(12, 22);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(513, 126);
+            groupBox4.Size = new Size(423, 126);
             groupBox4.TabIndex = 0;
             groupBox4.TabStop = false;
             groupBox4.Text = "Статус терминала";
             // 
-            // radioButton2
+            // ONTerminal
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(18, 75);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(156, 29);
-            radioButton2.TabIndex = 1;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "ВКЛ. терминал";
-            radioButton2.UseVisualStyleBackColor = true;
-            radioButton2.CheckedChanged += radioButton2_CheckedChanged;
+            ONTerminal.AutoSize = true;
+            ONTerminal.Location = new Point(18, 75);
+            ONTerminal.Name = "ONTerminal";
+            ONTerminal.Size = new Size(156, 29);
+            ONTerminal.TabIndex = 1;
+            ONTerminal.TabStop = true;
+            ONTerminal.Text = "ВКЛ. терминал";
+            ONTerminal.UseVisualStyleBackColor = true;
+            ONTerminal.CheckedChanged += radioButton2_CheckedChanged;
             // 
-            // radioButton1
+            // OFFTerminal
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(18, 40);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(170, 29);
-            radioButton1.TabIndex = 0;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "ВЫКЛ. терминал";
-            radioButton1.UseVisualStyleBackColor = true;
-            radioButton1.CheckedChanged += radioButton1_CheckedChanged;
+            OFFTerminal.AutoSize = true;
+            OFFTerminal.Location = new Point(18, 40);
+            OFFTerminal.Name = "OFFTerminal";
+            OFFTerminal.Size = new Size(170, 29);
+            OFFTerminal.TabIndex = 0;
+            OFFTerminal.TabStop = true;
+            OFFTerminal.Text = "ВЫКЛ. терминал";
+            OFFTerminal.UseVisualStyleBackColor = true;
+            OFFTerminal.CheckedChanged += radioButton1_CheckedChanged;
             // 
             // InfoForClientGroupBox
             // 
@@ -217,7 +208,6 @@ namespace InterFaceModul
             InfoForClientGroupBox.Controls.Add(nameLabelOutput);
             InfoForClientGroupBox.Controls.Add(middleNameLabel);
             InfoForClientGroupBox.Controls.Add(email);
-            InfoForClientGroupBox.Controls.Add(photoGroupBox);
             InfoForClientGroupBox.Controls.Add(phoneLabel);
             InfoForClientGroupBox.Controls.Add(ageLabel);
             InfoForClientGroupBox.Controls.Add(DateOfBirthLabel);
@@ -226,9 +216,9 @@ namespace InterFaceModul
             InfoForClientGroupBox.Controls.Add(INNLabel);
             InfoForClientGroupBox.Controls.Add(lastnameLabel);
             InfoForClientGroupBox.Controls.Add(nameLabel);
-            InfoForClientGroupBox.Location = new Point(553, 37);
+            InfoForClientGroupBox.Location = new Point(964, 37);
             InfoForClientGroupBox.Name = "InfoForClientGroupBox";
-            InfoForClientGroupBox.Size = new Size(503, 568);
+            InfoForClientGroupBox.Size = new Size(423, 568);
             InfoForClientGroupBox.TabIndex = 6;
             InfoForClientGroupBox.TabStop = false;
             InfoForClientGroupBox.Text = "Данные о клиенте";
@@ -316,99 +306,100 @@ namespace InterFaceModul
             // middleNameLabel
             // 
             middleNameLabel.AutoSize = true;
+            middleNameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             middleNameLabel.Location = new Point(20, 165);
             middleNameLabel.Name = "middleNameLabel";
-            middleNameLabel.Size = new Size(88, 25);
+            middleNameLabel.Size = new Size(93, 25);
             middleNameLabel.TabIndex = 26;
             middleNameLabel.Text = "Отчество";
             // 
             // email
             // 
             email.AutoSize = true;
+            email.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             email.Location = new Point(24, 495);
             email.Name = "email";
-            email.Size = new Size(54, 25);
+            email.Size = new Size(58, 25);
             email.TabIndex = 24;
             email.Text = "email";
-            // 
-            // photoGroupBox
-            // 
-            photoGroupBox.Location = new Point(355, 30);
-            photoGroupBox.Name = "photoGroupBox";
-            photoGroupBox.Size = new Size(142, 150);
-            photoGroupBox.TabIndex = 16;
-            photoGroupBox.TabStop = false;
-            photoGroupBox.Text = "Фото";
             // 
             // phoneLabel
             // 
             phoneLabel.AutoSize = true;
+            phoneLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             phoneLabel.Location = new Point(24, 447);
             phoneLabel.Name = "phoneLabel";
-            phoneLabel.Size = new Size(81, 25);
+            phoneLabel.Size = new Size(89, 25);
             phoneLabel.TabIndex = 14;
             phoneLabel.Text = "Телефон";
             // 
             // ageLabel
             // 
             ageLabel.AutoSize = true;
+            ageLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             ageLabel.Location = new Point(24, 400);
             ageLabel.Name = "ageLabel";
-            ageLabel.Size = new Size(76, 25);
+            ageLabel.Size = new Size(82, 25);
             ageLabel.TabIndex = 6;
             ageLabel.Text = "Возраст";
             // 
             // DateOfBirthLabel
             // 
             DateOfBirthLabel.AutoSize = true;
+            DateOfBirthLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             DateOfBirthLabel.Location = new Point(24, 352);
             DateOfBirthLabel.Name = "DateOfBirthLabel";
-            DateOfBirthLabel.Size = new Size(140, 25);
+            DateOfBirthLabel.Size = new Size(152, 25);
             DateOfBirthLabel.TabIndex = 5;
             DateOfBirthLabel.Text = "День рождения";
             // 
             // AddressLabel
             // 
             AddressLabel.AutoSize = true;
+            AddressLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             AddressLabel.Location = new Point(24, 306);
             AddressLabel.Name = "AddressLabel";
-            AddressLabel.Size = new Size(62, 25);
+            AddressLabel.Size = new Size(67, 25);
             AddressLabel.TabIndex = 4;
             AddressLabel.Text = "Адрес";
             // 
             // pasportLabel
             // 
             pasportLabel.AutoSize = true;
+            pasportLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             pasportLabel.Location = new Point(24, 263);
             pasportLabel.Name = "pasportLabel";
-            pasportLabel.Size = new Size(81, 25);
+            pasportLabel.Size = new Size(86, 25);
             pasportLabel.TabIndex = 3;
             pasportLabel.Text = "Паспорт";
             // 
             // INNLabel
             // 
             INNLabel.AutoSize = true;
+            INNLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             INNLabel.Location = new Point(24, 218);
             INNLabel.Name = "INNLabel";
-            INNLabel.Size = new Size(51, 25);
+            INNLabel.Size = new Size(54, 25);
             INNLabel.TabIndex = 2;
             INNLabel.Text = "ИНН";
             // 
             // lastnameLabel
             // 
             lastnameLabel.AutoSize = true;
+            lastnameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lastnameLabel.Location = new Point(20, 112);
             lastnameLabel.Name = "lastnameLabel";
-            lastnameLabel.Size = new Size(85, 25);
+            lastnameLabel.Size = new Size(94, 25);
             lastnameLabel.TabIndex = 1;
             lastnameLabel.Text = "Фамилия";
             // 
             // nameLabel
             // 
             nameLabel.AutoSize = true;
+            nameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             nameLabel.Location = new Point(24, 64);
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(47, 25);
+            nameLabel.Size = new Size(50, 25);
             nameLabel.TabIndex = 0;
             nameLabel.Text = "Имя";
             // 
@@ -421,7 +412,7 @@ namespace InterFaceModul
             infoForAccountClient.Controls.Add(pincodeLabel);
             infoForAccountClient.Controls.Add(balanceLabel);
             infoForAccountClient.Controls.Add(AccountLabel);
-            infoForAccountClient.Location = new Point(1080, 37);
+            infoForAccountClient.Location = new Point(1407, 37);
             infoForAccountClient.Name = "infoForAccountClient";
             infoForAccountClient.Size = new Size(477, 568);
             infoForAccountClient.TabIndex = 28;
@@ -488,20 +479,39 @@ namespace InterFaceModul
             AccountLabel.TabIndex = 1;
             AccountLabel.Text = "Счет";
             // 
+            // listBoxClients
+            // 
+            listBoxClients.FormattingEnabled = true;
+            listBoxClients.ItemHeight = 25;
+            listBoxClients.Location = new Point(36, 30);
+            listBoxClients.Name = "listBoxClients";
+            listBoxClients.Size = new Size(431, 529);
+            listBoxClients.TabIndex = 29;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(listBoxClients);
+            groupBox2.Location = new Point(454, 37);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(492, 568);
+            groupBox2.TabIndex = 30;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Список клиентов";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1600, 950);
+            ClientSize = new Size(1888, 784);
+            Controls.Add(groupBox2);
             Controls.Add(infoForAccountClient);
             Controls.Add(InfoForClientGroupBox);
-            Controls.Add(button5);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
-            Controls.Add(groupBox1);
+            Controls.Add(functionalGroupBox);
             Name = "Form1";
             Text = "Server";
-            groupBox1.ResumeLayout(false);
+            functionalGroupBox.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             groupBox4.ResumeLayout(false);
@@ -510,29 +520,28 @@ namespace InterFaceModul
             InfoForClientGroupBox.PerformLayout();
             infoForAccountClient.ResumeLayout(false);
             infoForAccountClient.PerformLayout();
+            groupBox2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
         private SerialPort port;
-        private Button button6;
-        private Button button5;
-        private Button button4;
-        private Button button3;
-        private Button button2;
-        private GroupBox groupBox1;
+        private Button clearLogButton;
+        private Button DeleteClientButton;
+        private Button EditClientButton;
+        private Button addedClientButton;
+        private GroupBox functionalGroupBox;
         private GroupBox groupBox3;
         private GroupBox groupBox4;
         private ToolTip toolTip;
-        private TextBox textBox1;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
+        private TextBox LogMessageTextBox;
+        private RadioButton ONTerminal;
+        private RadioButton OFFTerminal;
         private System.Windows.Forms.Timer timer1;
         private GroupBox InfoForClientGroupBox;
         private Label middleNameLabel;
         private Label email;
-        private GroupBox photoGroupBox;
         private Label phoneLabel;
         private Label ageLabel;
         private Label DateOfBirthLabel;
@@ -559,5 +568,7 @@ namespace InterFaceModul
         private Label pincodeLabelOutput;
         private Label balanceLabelOutput;
         private Label AccountLabelOutput;
+        private ListBox listBoxClients;
+        private GroupBox groupBox2;
     }
 }

@@ -11,26 +11,31 @@ namespace InterFaceModul.database.Models
     {
         public int Id { get; set; }
 
-        [Required (ErrorMessage ="Enter Name")]
-        public string FirstName { get; set; }
+        [Required (ErrorMessage ="Введите имя")]
+        public string FirstName { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Enter LastName")]
-        public string LastName { get; set; }
+        [Required(ErrorMessage = "Введите фамилию")]
+        public string LastName { get; set; } = string.Empty;
 
-        public string MiddleName { get; set; }
+        [Required(ErrorMessage = "Введите отчество")]
+        public string MiddleName { get; set; } = string.Empty;
 
-        public string Age { get; set; }
+        [Required(ErrorMessage = "Введите возраст")]
+        public string Age { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Enter Name")]
-        public string INN { get; set; }
+        [Required(ErrorMessage = "Введите ИНН")]
+        public string INN { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Enter Name")]
-        public string Pass { get; set; }
+        [Required(ErrorMessage = "Введите серию и номер паспорта без проблема")]
+        public string Pass { get; set; } = string.Empty;
 
-        public string Phone { get; set; }
+        [Required(ErrorMessage = "Введите телефон")]
+        public string Phone { get; set; } = string.Empty;
 
-        public string Address { get; set; }
+        //[Required(ErrorMessage = "Введите адрес проживания")]
+        public string Address { get; set; } = string.Empty;
 
-        public string Email { get; set; }
+        [Required(ErrorMessage = "Введите email")]
+        public string Email { get; set; } = string.Empty;
     }
 }
