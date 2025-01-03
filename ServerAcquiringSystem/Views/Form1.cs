@@ -21,6 +21,11 @@ namespace InterFaceModul
             port.ReadTimeout = 2000;
             timer1.Interval = 2000;
             timer1.Tick += Timer_Tick;
+
+            var data = _databaseService.GetAllClientsPass();
+            foreach (var client in data) {
+                listBoxClients.Items.Add(client);
+            }
         }
 
         private void LogMessage(string message)
