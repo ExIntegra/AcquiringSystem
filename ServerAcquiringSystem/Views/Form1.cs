@@ -23,9 +23,11 @@ namespace InterFaceModul
             timer1.Tick += Timer_Tick;
 
             var data = _databaseService.GetAllClientsPass();
-            foreach (var client in data) {
+            foreach (var client in data)
+            {
                 listBoxClients.Items.Add(client);
             }
+
         }
 
         private void LogMessage(string message)

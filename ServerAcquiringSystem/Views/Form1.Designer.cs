@@ -511,6 +511,7 @@ namespace InterFaceModul
             Controls.Add(functionalGroupBox);
             Name = "Form1";
             Text = "Server";
+            Activated += Form1_Activated;
             functionalGroupBox.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
