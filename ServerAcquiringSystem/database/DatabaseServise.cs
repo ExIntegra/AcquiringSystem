@@ -27,7 +27,7 @@ namespace InterFaceModul.database
 
         public void Add(Person person)
         {
-            _context.Add(person);
+            _context.clients.Add(person);
             _context.SaveChanges();
         }
 
@@ -41,7 +41,7 @@ namespace InterFaceModul.database
 
         public void Delete(Person person)
         {
-            _context.Remove(person);
+            _context.clients.Remove(person);
             _context.SaveChanges();
         }
 
@@ -60,7 +60,7 @@ namespace InterFaceModul.database
                 per.Address = person.Address;
                 per.INN = person.INN;
 
-                _context.Update(per);
+                _context.clients.Update(per);
                 _context.SaveChanges();
             }
         }

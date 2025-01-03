@@ -6,8 +6,6 @@ namespace InterFaceModul
 {
     public class AppDBContext : DbContext
     {
-        public DbSet<Person> Persons { get; set; }
-
         public DbSet<Person> clients => Set<Person>();
 
         public AppDBContext()

@@ -9,10 +9,13 @@ namespace InterFaceModul
     {
 
         private AppDBContext _context;
-        DatabaseServise databaseService;
+        private DatabaseServise _databaseService;
 
         public Form1() //конструктор
         {
+            AppDBContext context = new AppDBContext();
+            _context = context;
+            _databaseService = new DatabaseServise(_context);
             InitializeComponent();
             port = new SerialPort("COM256", 9600, Parity.None, 8, StopBits.One); //предупреждение NULL
             port.ReadTimeout = 2000;
@@ -69,19 +72,13 @@ namespace InterFaceModul
             listBoxClients.Items.Clear();
             listBoxClients.BeginUpdate();
 
-            var data = databaseService.GetAllClientsPass();
+            var data = _databaseService.GetAllClientsPass();
             foreach (var item in data)
             {
                 listBoxClients.Items.Add(item);
             }
 
             listBoxClients.EndUpdate();
-        }
-
-        private void DoubleClickListBox(object sender, EventArgs e) //двойное нажатие для редактирования клиента
-        {
-            Form addedClient = new AddedClient(databaseService, listBoxClients.SelectedIndex);
-            addedClient.ShowDialog();
         }
 
         private void clearLogButton_Click(object sender, EventArgs e)
@@ -127,14 +124,26 @@ namespace InterFaceModul
 
         private void addedClientButton_Click(object sender, EventArgs e) //добавление клиента
         {
-            Form addedClient = new AddedClient(databaseService);
+            Form addedClient = new AddedClient(_databaseService);
             addedClient.ShowDialog();
         }
 
         private void EditClientButton_Click(object sender, EventArgs e) //редактирование клиента
         {
-            Form editClient = new AddedClient(databaseService, listBoxClients.SelectedIndex);
-            editClient.ShowDialog();
+            if (listBoxClients.SelectedIndex != -1)
+            {
+                Form editClient = new AddedClient(_databaseService, listBoxClients.SelectedIndex);
+                editClient.ShowDialog();
+            }
+        }
+
+        private void DoubleClickListBox(object sender, EventArgs e) //двойное нажатие для редактирования клиента
+        {
+            if (listBoxClients.SelectedIndex != -1)
+            {
+                Form editClient = new AddedClient(_databaseService, listBoxClients.SelectedIndex);
+                editClient.ShowDialog();
+            };
         }
     }
 }

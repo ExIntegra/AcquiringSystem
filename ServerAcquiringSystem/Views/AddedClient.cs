@@ -93,6 +93,7 @@ namespace InterFaceModul
             }
 
             var validationResults = new List<ValidationResult>();
+           AppDBContext context = new AppDBContext();
             Person person = new Person()
             {
                 FirstName = nameInput.Text,
@@ -125,10 +126,12 @@ namespace InterFaceModul
                 if(Add == true)
                 {
                     _databaseServise.Add(person);
+                    Close();
                 }
                 else
                 {
                     _databaseServise.Update(person);
+                    Close();
                 }
             }
         }
