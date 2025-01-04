@@ -39,10 +39,14 @@ namespace InterFaceModul.database
             return data.ToList();
         }
 
-        public void Delete(Person person)
+        public void Delete(Person deletePerson)
         {
-            _context.clients.Remove(person);
-            _context.SaveChanges();
+            var per = _context.clients.Find(deletePerson.Id);
+            if (per != null)
+            {
+                _context.clients.Remove(deletePerson);
+                _context.SaveChanges();
+            }
         }
 
         public void Update(Person person)
@@ -63,6 +67,11 @@ namespace InterFaceModul.database
                 _context.clients.Update(per);
                 _context.SaveChanges();
             }
+        }
+
+        public string transaction(string str)
+        {
+            return "w";
         }
     }
 }

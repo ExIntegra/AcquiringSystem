@@ -1,4 +1,5 @@
 using InterFaceModul.database;
+using InterFaceModul.database.Models;
 using System;
 using System.IO.Ports;
 using System.Windows.Forms;
@@ -57,7 +58,7 @@ namespace InterFaceModul
 
                         if (port.ReadLine() == "Good\r" || arrayTransaction.Length > 0)
                         {
-                            //база данных
+                            string data = _databaseService.transaction("222");
                         }
                     }
                 }
@@ -151,6 +152,18 @@ namespace InterFaceModul
                 Form editClient = new AddedClient(_databaseService, listBoxClients.SelectedIndex);
                 editClient.ShowDialog();
             };
+        }
+
+        private void DeleteClientButton_Click_1(object sender, EventArgs e) //кнопка удалени€ клиента 
+        {
+            LogMessage("кнопка удалить нажата"); //провер€ю зашел ли вообще в событие
+            if (listBoxClients.SelectedIndex != -1)
+            {
+                Person deletePerson = _databaseService.GetPersonById(listBoxClients.SelectedIndex); //получили кортеж из Ѕƒ по айди
+                LogMessage("кнопка удалить нажата"); //провер€ю дошел ли до сюда
+                _databaseService.Delete(deletePerson);
+            };
+
         }
     }
 }

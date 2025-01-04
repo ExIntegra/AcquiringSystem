@@ -92,6 +92,7 @@ namespace InterFaceModul
             DeleteClientButton.Text = "Удалить";
             toolTip.SetToolTip(DeleteClientButton, "Удалить клиента банка");
             DeleteClientButton.UseVisualStyleBackColor = false;
+            DeleteClientButton.Click += DeleteClientButton_Click_1;
             // 
             // EditClientButton
             // 
