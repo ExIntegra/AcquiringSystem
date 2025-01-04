@@ -56,11 +56,24 @@ namespace InterFaceModul
                         port.WriteLine(messageForServer);
                         string[] arrayTransaction = messageForServer.Replace("transaction:", "").Split(',');
 
-                        if (port.ReadLine() == "Good\r" || arrayTransaction.Length > 0)
+                        if (port.ReadLine() == "Good\r" && arrayTransaction.Length > 0)
                         {
-                            string data = _databaseService.transaction("222");
+                            string uid = arrayTransaction[0];
+                            string pincode = arrayTransaction[1];
+                            int price = int.Parse(arrayTransaction[2]);
+                            string data = _databaseService.transaction(uid, pincode, price);
+                            port.WriteLine(data); //added answer an display terminal
+                            LogMessage(data);
                         }
                     }
+                }
+                catch (System.IO.FileNotFoundException ex)
+                {
+                    LogMessage("Терминал не подключен");
+                }
+                catch (UnauthorizedAccessException ex)
+                {
+                    LogMessage("Терминал не подключен");
                 }
                 catch (TimeoutException)
                 {
@@ -69,7 +82,7 @@ namespace InterFaceModul
                 }
                 catch (Exception ex)
                 {
-                    LogMessage(ex.ToString());
+                    //LogMessage(ex.ToString());
                     LogMessage("Ошибка порта");
                 }
             }
@@ -105,6 +118,14 @@ namespace InterFaceModul
                     timer1.Stop();
                 }
             }
+            catch (System.IO.FileNotFoundException ex)
+            {
+                LogMessage("Терминал не подключен");
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                LogMessage("Терминал не подключен");
+            }
             catch (Exception ex)
             {
                 LogMessage(ex.ToString());
@@ -122,6 +143,14 @@ namespace InterFaceModul
                     LogMessage("Порт открыт");
                     timer1.Start();
                 }
+            }
+            catch (System.IO.FileNotFoundException ex)
+            {
+                LogMessage("Терминал не подключен");
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                LogMessage("Терминал не подключен");
             }
             catch (Exception ex)
             {
@@ -156,12 +185,12 @@ namespace InterFaceModul
 
         private void DeleteClientButton_Click_1(object sender, EventArgs e) //кнопка удаления клиента 
         {
-            LogMessage("кнопка удалить нажата"); //проверяю зашел ли вообще в событие
             if (listBoxClients.SelectedIndex != -1)
             {
                 Person deletePerson = _databaseService.GetPersonById(listBoxClients.SelectedIndex); //получили кортеж из БД по айди
-                LogMessage("кнопка удалить нажата"); //проверяю дошел ли до сюда
                 _databaseService.Delete(deletePerson);
+                listBoxClients.Items.Remove(listBoxClients.SelectedIndex);
+                Form1_Activated(sender, e);
             };
 
         }

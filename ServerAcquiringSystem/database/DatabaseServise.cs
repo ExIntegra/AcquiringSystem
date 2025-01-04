@@ -19,9 +19,10 @@ namespace InterFaceModul.database
 
         public Person GetPersonById(int id)
         {
-            var data = (from item in _context.clients
-                        where item.Id == (id + 1)
-                        select item).FirstOrDefault();
+            var data = _context.clients.ElementAt(id);
+           // var data = (from item in _context.clients
+                    //    where item.Id == (id + 1)
+                      //  select item).FirstOrDefault();
             return data;
         }
 
@@ -39,7 +40,7 @@ namespace InterFaceModul.database
             return data.ToList();
         }
 
-        public void Delete(Person deletePerson)
+        public void Delete(Person deletePerson) //удаление клиента
         {
             var per = _context.clients.Find(deletePerson.Id);
             if (per != null)
@@ -49,10 +50,10 @@ namespace InterFaceModul.database
             }
         }
 
-        public void Update(Person person)
+        public void Update(Person person) //обновление данных клиента
         {
             var per = _context.clients.Find(person.Id);
-            if (per != null)
+            if (per != null) //если клиент найден
             {
                 per.FirstName = person.FirstName;
                 per.LastName = person.LastName;
@@ -69,9 +70,54 @@ namespace InterFaceModul.database
             }
         }
 
-        public string transaction(string str)
+        public string transaction(string uid,       ///< uid уникальный номер банковской карты
+                                  string pincode,   ///< пинкод карты
+                                  int price)        ///< стоимость покупки
         {
-            return "w";
+            var per = _context.clients.Find(uid); //ищем в БД клиента с uid, который поступает в серсис из терминала
+
+            if (per != null) //если клиент найдет, то обрабатываем платеж
+            {
+                //если пинкод верный, стоимость меньше баланса, карта не заблокирована, то проводим оплату и возращаем accept
+                if (pincode == per.pincode && price <= per.balance && per.statusTransactionCard)
+                {
+                    per.balance -= price;
+                    _context.clients.Update(per);
+                    _context.SaveChanges();
+                    return "accept";
+                }
+
+                //если карта заблокирована, то оплата не происходит
+                else if (per.statusTransactionCard == false) return "blocked";
+
+                //если количество попыток ввода 0 или меньше, то блокируем карту для оплаты
+                else if (per.attemptCounter <= 0)
+                {
+                    per.statusTransactionCard = false;
+                    _context.clients.Update(per);
+                    _context.SaveChanges();
+                    return "blocked";
+                }
+
+                //ели неверный пинкод, то уменьшаем количество попыток ввода пинкода на одну
+                else if (pincode != per.pincode)
+                {
+                    per.attemptCounter--;
+                    _context.clients.Update(per);
+                    _context.SaveChanges();
+                    return "pincode";
+                }
+
+                //если не хватает денег на балансе
+                else if (price > per.balance) return "money";
+
+                //если ни одно условие не подошло
+                else return "error";
+            }
+            else
+            {
+                return "Клиент банка не найден";
+            }
         }
     }
 }

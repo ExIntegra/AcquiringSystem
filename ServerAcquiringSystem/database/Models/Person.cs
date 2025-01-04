@@ -32,10 +32,17 @@ namespace InterFaceModul.database.Models
         [Required(ErrorMessage = "Введите телефон")]
         public string Phone { get; set; } = string.Empty;
 
-        //[Required(ErrorMessage = "Введите адрес проживания")]
         public string Address { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Введите email")]
         public string Email { get; set; } = string.Empty;
+
+        public int balance { get; set; } = 0;
+
+        public string pincode {  get; set; } = string.Empty;
+
+        public int attemptCounter { get; set; } = 3;
+
+        public bool statusTransactionCard { get; set; } = true;
     }
 }

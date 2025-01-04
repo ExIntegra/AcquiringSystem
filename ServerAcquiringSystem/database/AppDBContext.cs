@@ -9,6 +9,7 @@ namespace InterFaceModul
         public DbSet<Person> clients { get; set; }
         public AppDBContext()
         {
+            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 

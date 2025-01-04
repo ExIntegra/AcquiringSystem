@@ -118,7 +118,7 @@ namespace InterFaceModul
             // 
             // clearLogButton
             // 
-            clearLogButton.Location = new Point(136, 372);
+            clearLogButton.Location = new Point(164, 375);
             clearLogButton.Name = "clearLogButton";
             clearLogButton.Size = new Size(112, 34);
             clearLogButton.TabIndex = 3;
@@ -145,7 +145,7 @@ namespace InterFaceModul
             groupBox3.Controls.Add(clearLogButton);
             groupBox3.Location = new Point(17, 190);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(418, 415);
+            groupBox3.Size = new Size(441, 415);
             groupBox3.TabIndex = 0;
             groupBox3.TabStop = false;
             groupBox3.Text = "Логирование терминала";
@@ -156,7 +156,7 @@ namespace InterFaceModul
             LogMessageTextBox.Multiline = true;
             LogMessageTextBox.Name = "LogMessageTextBox";
             LogMessageTextBox.ScrollBars = ScrollBars.Vertical;
-            LogMessageTextBox.Size = new Size(374, 331);
+            LogMessageTextBox.Size = new Size(422, 331);
             LogMessageTextBox.TabIndex = 0;
             LogMessageTextBox.WordWrap = false;
             // 
