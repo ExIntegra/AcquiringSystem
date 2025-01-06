@@ -74,6 +74,7 @@ namespace InterFaceModul
             AccountLabel = new Label();
             listBoxClients = new ListBox();
             groupBox2 = new GroupBox();
+            button1 = new Button();
             functionalGroupBox.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox4.SuspendLayout();
@@ -499,11 +500,22 @@ namespace InterFaceModul
             groupBox2.TabStop = false;
             groupBox2.Text = "Список клиентов";
             // 
+            // button1
+            // 
+            button1.Location = new Point(1031, 645);
+            button1.Name = "button1";
+            button1.Size = new Size(112, 34);
+            button1.TabIndex = 31;
+            button1.Text = "оплатить";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1888, 784);
+            Controls.Add(button1);
             Controls.Add(groupBox2);
             Controls.Add(infoForAccountClient);
             Controls.Add(InfoForClientGroupBox);
@@ -572,5 +584,6 @@ namespace InterFaceModul
         private Label AccountLabelOutput;
         private ListBox listBoxClients;
         private GroupBox groupBox2;
+        private Button button1;
     }
 }

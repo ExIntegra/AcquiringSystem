@@ -51,9 +51,9 @@
             lastnameLabel = new Label();
             nameLabel = new Label();
             infoForAccountClient = new GroupBox();
-            textBox11 = new TextBox();
-            textBox10 = new TextBox();
-            textBox9 = new TextBox();
+            acc = new TextBox();
+            pincode = new TextBox();
+            balance = new TextBox();
             accounts = new GroupBox();
             pincodeLabel = new Label();
             balanceLabel = new Label();
@@ -89,7 +89,7 @@
             InfoForClientGroupBox.Controls.Add(nameLabel);
             InfoForClientGroupBox.Location = new Point(12, 12);
             InfoForClientGroupBox.Name = "InfoForClientGroupBox";
-            InfoForClientGroupBox.Size = new Size(503, 568);
+            InfoForClientGroupBox.Size = new Size(503, 595);
             InfoForClientGroupBox.TabIndex = 5;
             InfoForClientGroupBox.TabStop = false;
             InfoForClientGroupBox.Text = "Данные о клиенте";
@@ -265,9 +265,9 @@
             // 
             // infoForAccountClient
             // 
-            infoForAccountClient.Controls.Add(textBox11);
-            infoForAccountClient.Controls.Add(textBox10);
-            infoForAccountClient.Controls.Add(textBox9);
+            infoForAccountClient.Controls.Add(acc);
+            infoForAccountClient.Controls.Add(pincode);
+            infoForAccountClient.Controls.Add(balance);
             infoForAccountClient.Controls.Add(accounts);
             infoForAccountClient.Controls.Add(pincodeLabel);
             infoForAccountClient.Controls.Add(balanceLabel);
@@ -279,26 +279,26 @@
             infoForAccountClient.TabStop = false;
             infoForAccountClient.Text = "Информация о счете";
             // 
-            // textBox11
+            // acc
             // 
-            textBox11.Location = new Point(103, 60);
-            textBox11.Name = "textBox11";
-            textBox11.Size = new Size(186, 31);
-            textBox11.TabIndex = 8;
+            acc.Location = new Point(103, 60);
+            acc.Name = "acc";
+            acc.Size = new Size(186, 31);
+            acc.TabIndex = 8;
             // 
-            // textBox10
+            // pincode
             // 
-            textBox10.Location = new Point(103, 138);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(186, 31);
-            textBox10.TabIndex = 7;
+            pincode.Location = new Point(103, 138);
+            pincode.Name = "pincode";
+            pincode.Size = new Size(186, 31);
+            pincode.TabIndex = 7;
             // 
-            // textBox9
+            // balance
             // 
-            textBox9.Location = new Point(103, 101);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(186, 31);
-            textBox9.TabIndex = 6;
+            balance.Location = new Point(103, 101);
+            balance.Name = "balance";
+            balance.Size = new Size(186, 31);
+            balance.TabIndex = 6;
             // 
             // accounts
             // 
@@ -399,9 +399,9 @@
         private TextBox INNInput;
         private TextBox lastNameInput;
         private TextBox nameInput;
-        private TextBox textBox11;
-        private TextBox textBox10;
-        private TextBox textBox9;
+        private TextBox acc;
+        private TextBox pincode;
+        private TextBox balance;
         private Button addClientButton;
         private Button CancelClient;
         private TextBox emailInput;

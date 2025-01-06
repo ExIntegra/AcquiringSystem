@@ -11,7 +11,7 @@ namespace InterFaceModul.database.Models
     {
         public int Id { get; set; }
 
-        [Required (ErrorMessage ="Введите имя")]
+        [Required(ErrorMessage = "Введите имя")]
         public string FirstName { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Введите фамилию")]
@@ -39,10 +39,12 @@ namespace InterFaceModul.database.Models
 
         public int balance { get; set; } = 0;
 
-        public string pincode {  get; set; } = string.Empty;
+        public string pincode { get; set; } = string.Empty;
 
         public int attemptCounter { get; set; } = 3;
 
         public bool statusTransactionCard { get; set; } = true;
+
+        public string uid { get; set; } = string.Empty;
     }
 }

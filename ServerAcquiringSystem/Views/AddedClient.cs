@@ -38,6 +38,8 @@ namespace InterFaceModul
             Add = false;
             _selectedPerson = databaseService.GetPersonById(SelectedIndex);
 
+            acc.Text = _selectedPerson.uid;
+            balance.Text = _selectedPerson.balance;
             nameInput.Text = _selectedPerson.FirstName;
             lastNameInput.Text = _selectedPerson.LastName;
             middleNameInput.Text = _selectedPerson.MiddleName;

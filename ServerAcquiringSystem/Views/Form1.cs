@@ -194,5 +194,11 @@ namespace InterFaceModul
             };
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string answer = _databaseService.transaction("0000111122223333", "1234", 2000);
+            LogMessage(answer);
+        }
     }
 }

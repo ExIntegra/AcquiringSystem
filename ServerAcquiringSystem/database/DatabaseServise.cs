@@ -74,7 +74,7 @@ namespace InterFaceModul.database
                                   string pincode,   ///< пинкод карты
                                   int price)        ///< стоимость покупки
         {
-            var per = _context.clients.Find(uid); //ищем в БД клиента с uid, который поступает в серсис из терминала
+            var per = _context.clients.FirstOrDefault(person => person.uid == uid); //ищем в БД клиента с uid, который поступает в серсис из терминала
 
             if (per != null) //если клиент найдет, то обрабатываем платеж
             {
