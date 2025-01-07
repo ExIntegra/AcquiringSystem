@@ -20,14 +20,13 @@ enum class terminalStatus{
 class PaymentProcess{
   public:
     void automatonOfStates();
-    PaymentProcess(): currentState(terminalStatus::CONNECT_TERMINAL_TO_SERVER)
-    {}
+    PaymentProcess(): currentState(terminalStatus::CONNECT_TERMINAL_TO_SERVER){}
 
   private:
     terminalStatus currentState;
-    String uid = "2002 2014 2653 8942";
-    int pincode = 1234;
-    int price = 5021;
+    String uid;
+    int pincode;
+    int price;
 
     String getCurrentStateString();
     int keyboard(void);

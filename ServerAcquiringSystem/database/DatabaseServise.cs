@@ -19,7 +19,7 @@ namespace InterFaceModul.database
 
         public Person GetPersonById(int id) //получение клиента по айди
         {
-            var data = _context.clients.ElementAt(id);
+            Person data = _context.clients.ElementAt(id);
             return data;
         }
 
@@ -114,7 +114,7 @@ namespace InterFaceModul.database
             }
             else
             {
-                return "Клиент банка не найден";
+                return "error";
             }
         }
     }

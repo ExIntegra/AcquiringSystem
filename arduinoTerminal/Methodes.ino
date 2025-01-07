@@ -108,7 +108,8 @@ void PaymentProcess::rfidCard()
     {             
       uid += String(rfid.uid.uidByte[i], HEX);
     }
-    setUID(uid);         
+    setUID(uid);   
+    //Serial.println(uid);      
     return;                             
   }
   displayMessage("Error Card", true, 0, 0); // Сообщение об успешном подключении
@@ -148,7 +149,8 @@ int PaymentProcess::keyboard()
     }
 
     else if (customKey == keyboard::KEY_STAR)             // Если нажата на клавиатуре "*", то происходит удаление введенного последнего символа на экране
-    {                                                     
+    {     
+      return digitsString.toInt();                                                
       lcd.setCursor(--cursorPointer, 1);                  // Установка курсора на место последнего введенного символа
       lcd.print(" ");                                     // Заменяем последний введеный символ пустотой
       digitsString.remove(digitsString.length() - 1);     // Удаляем из буффера последний введный символ
@@ -182,43 +184,53 @@ void PaymentProcess::processPayment(int price,    ///< price - сумма к о�
 {
   uint16_t timerProcessPayment = millis();
   uint16_t periodWaiting = 20000;
+  uint8_t quantityPoints = 4; 
   String statusTransaction = "";
-  String messageForServer = "transaction:" + (String)price + "," + uid + "," + (String)pincode;
+  String messageForServer = "transaction:" + uid + "," + (String)pincode + "," + (String)price;
 
-  while(millis() - timerProcessPayment <= periodWaiting) //send to server uid price pincode and waiting answer
-  {
-    String answerServer = Serial.readStringUntil('\r');
-    delay(1000);
-    Serial.println(messageForServer);
-    if(answerServer == messageForServer){
-      Serial.println("Good");
-    }
-  }
-  
   displayMessage("Processing tran-", true, 0, 0);             // Вывод на дисплей.
   displayMessage("saction.Wait", false, 0, 1);                // Вывод на дисплей.
 
-  uint8_t quantityPoints = 4;                                     // Количество точек, последовательно выведенных на экран
-  for (uint8_t j = 0; j < quantityPoints; j++)                    // Цикл выведения точек для имитации загрузки терминала.
+  while(millis() - timerProcessPayment <= periodWaiting) //send to server uid price pincode and waiting answer
   {
-    lcd.print(".");                                           // Выводим поочередно точки
-    delay(1000);                                              // Задержка между появлениями точек.
+    Serial.println(messageForServer); //отправляем на сервер
+    String answerServer = Serial.readStringUntil('\r'); //принимает ответ от сервера
+    lcd.print(".");
+    if(answerServer == messageForServer){ //убеждаемся, что передача данных корректна
+      Serial.println("Good");
+      break; //выходим из цикла 
+    }
+    delay(1000);
   }
+  while(statusTransaction == ""){
+    delay(1000);
+    displayMessage("waiting", true, 0,0);
+    statusTransaction =  Serial.readStringUntil('\r');
+    }
 
-  if(statusTransaction == "paymentSeccess"){
+  if(statusTransaction == "accept"){
+    delay(5000);
     currentState = terminalStatus::PAYMENT_SUCCESS;
   }
   
-  else if(statusTransaction == "invalidPincode"){
+  else if(statusTransaction == "pincode"){
+    delay(5000);
     currentState = terminalStatus::INPUT_PINCODE;
   }
 
-  else if(statusTransaction == "blockIsCard"){
+  else if(statusTransaction == "blocked"){
+    delay(5000);
     currentState = terminalStatus::CARD_BLOCKED;
   }
 
-  else if(statusTransaction == "noMoney"){
+  else if(statusTransaction == "money"){
+    delay(5000);
     currentState = terminalStatus::NO_MONEY;
+  }
+
+    else if(statusTransaction == "error"){
+    delay(5000);
+    currentState = terminalStatus::ERROR_SERVER;
   }
 
   else{

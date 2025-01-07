@@ -12,21 +12,21 @@ void PaymentProcess:: automatonOfStates()
 
       case terminalStatus::WAITING_INPUT_PRICE:
         currentState = terminalStatus::WAITING_CARD;
-        //displayMessage("RUB", true, 13, 1);                         
-        //displayMessage("", true, 0, 0);                
-        //setPrice(keyboard());
+        displayMessage("RUB", true, 13, 1);                         
+        displayMessage("K oplate", false, 0, 0);                
+        setPrice(keyboard());
         break;
 
       case terminalStatus::WAITING_CARD:
-        //displayMessage("Go card", true, 0, 0);
-        //rfidCard()
+        displayMessage("Go card", true, 0, 0);
+        rfidCard();
         currentState = terminalStatus::INPUT_PINCODE;
         break;
       
       case terminalStatus::INPUT_PINCODE:
         currentState = terminalStatus::PROCESSING_PAYMENT;
-        //displayMessage("Input pincode:", true, 0, 0);
-        //setPincode(keyboard());
+        displayMessage("Input pincode:", true, 0, 0);
+        setPincode(keyboard());
         break;
 
       case terminalStatus::PROCESSING_PAYMENT:

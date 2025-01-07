@@ -11,6 +11,7 @@ namespace InterFaceModul
 
         private AppDBContext _context;
         private DatabaseServise _databaseService;
+        private string[] array;
 
         public Form1() //конструктор
         {
@@ -48,23 +49,24 @@ namespace InterFaceModul
                     LogMessage(messageForServer);
                     if (messageForServer == "ConnectServer\r")
                     {
-                        Console.WriteLine("Отправка сообщения Arduino: ConnectArduino");
                         port.WriteLine("ConnectArduino");
                     }
                     else if (messageForServer.StartsWith("transaction:"))
                     {
                         port.WriteLine(messageForServer);
-                        string[] arrayTransaction = messageForServer.Replace("transaction:", "").Split(',');
-
-                        if (port.ReadLine() == "Good\r" && arrayTransaction.Length > 0)
-                        {
-                            string uid = arrayTransaction[0];
-                            string pincode = arrayTransaction[1];
-                            int price = int.Parse(arrayTransaction[2]);
-                            string data = _databaseService.transaction(uid, pincode, price);
-                            port.WriteLine(data); //added answer an display terminal
-                            LogMessage(data);
-                        }
+                        array = messageForServer.Replace("transaction:", "").Split(',');
+                    }
+                    else if (messageForServer.StartsWith("Good") && array.Length > 0)
+                    {
+                        string uid = array[0];
+                        string pincode = array[1];
+                        int price = int.Parse(array[2]);
+                        LogMessage(uid);
+                        LogMessage(pincode);
+                        LogMessage(price.ToString());
+                        string data = _databaseService.transaction(uid, pincode, price);
+                        port.WriteLine(data); //added answer an display terminal
+                        LogMessage(data);
                     }
                 }
                 catch (System.IO.FileNotFoundException ex)
@@ -210,34 +212,36 @@ namespace InterFaceModul
 
         private void listBoxClients_Click(object sender, EventArgs e)
         {
-            Person viewPerson = _databaseService.GetPersonById(listBoxClients.SelectedIndex);
-            firstNameLabelOutput.Text = viewPerson.FirstName;
-            midleNameLabelOutput.Text = viewPerson.MiddleName;
-            lastNameOutputLabel.Text = viewPerson.LastName;
-            ageOutputLabel.Text = viewPerson.Age;
-            passportOutputLabel.Text = viewPerson.Passport;
-            emailOutputLabel.Text = viewPerson.Email;
-            balanceOutputLabel.Text = viewPerson.balance.ToString();
-            pincodeOutputLabel.Text = viewPerson.pincode;
-            accOutputLabel.Text = viewPerson.uid;
-            //dateOfBirthOutputLabel.Text = viewPerson.DateOfBirth;
-            innOutputLabel.Text = viewPerson.INN;
-            addressOutputLabel.Text = viewPerson.Address;
+            if (listBoxClients.SelectedIndex != -1)
+            {
+                Person viewPerson = _databaseService.GetPersonById(listBoxClients.SelectedIndex);
 
-            firstNameLabelOutput.Visible = true;
-            midleNameLabelOutput.Visible = true;
-            lastNameOutputLabel.Visible = true;
-            ageOutputLabel.Visible = true;
-            passportOutputLabel.Visible = true;
-            emailOutputLabel.Visible = true;
-            balanceOutputLabel.Visible = true;
-            pincodeOutputLabel.Visible = true;
-            accOutputLabel.Visible = true;
-            innOutputLabel.Visible = true;
-            addressOutputLabel.Visible = true;
-            dateOfBirthOutputLabel.Visible = true;
+                firstNameLabelOutput.Text = viewPerson.FirstName;
+                midleNameLabelOutput.Text = viewPerson.MiddleName;
+                lastNameOutputLabel.Text = viewPerson.LastName;
+                ageOutputLabel.Text = viewPerson.Age;
+                passportOutputLabel.Text = viewPerson.Passport;
+                emailOutputLabel.Text = viewPerson.Email;
+                balanceOutputLabel.Text = viewPerson.balance.ToString();
+                pincodeOutputLabel.Text = viewPerson.pincode;
+                accOutputLabel.Text = viewPerson.uid;
+                //dateOfBirthOutputLabel.Text = viewPerson.DateOfBirth;
+                innOutputLabel.Text = viewPerson.INN;
+                addressOutputLabel.Text = viewPerson.Address;
 
-
+                firstNameLabelOutput.Visible = true;
+                midleNameLabelOutput.Visible = true;
+                lastNameOutputLabel.Visible = true;
+                ageOutputLabel.Visible = true;
+                passportOutputLabel.Visible = true;
+                emailOutputLabel.Visible = true;
+                balanceOutputLabel.Visible = true;
+                pincodeOutputLabel.Visible = true;
+                accOutputLabel.Visible = true;
+                innOutputLabel.Visible = true;
+                addressOutputLabel.Visible = true;
+                dateOfBirthOutputLabel.Visible = true;
+            };
         }
 
 
