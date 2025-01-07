@@ -17,16 +17,13 @@ namespace InterFaceModul.database
             _context = context;
         }
 
-        public Person GetPersonById(int id)
+        public Person GetPersonById(int id) //получение клиента по айди
         {
             var data = _context.clients.ElementAt(id);
-           // var data = (from item in _context.clients
-                    //    where item.Id == (id + 1)
-                      //  select item).FirstOrDefault();
             return data;
         }
 
-        public void Add(Person person)
+        public void Add(Person person) //добавление клиента
         {
             _context.clients.Add(person);
             _context.SaveChanges();
@@ -34,9 +31,7 @@ namespace InterFaceModul.database
 
         public List<string> GetAllClientsPass()
         {
-            var data = from item in _context.clients
-                       select item.Pass;
-
+            var data = from item in _context.clients select item.Passport;
             return data.ToList();
         }
 
@@ -55,10 +50,13 @@ namespace InterFaceModul.database
             var per = _context.clients.Find(person.Id);
             if (per != null) //если клиент найден
             {
+                per.uid = person.uid;
+                per.pincode = person.pincode;
+                per.balance = person.balance;
                 per.FirstName = person.FirstName;
                 per.LastName = person.LastName;
                 per.MiddleName = person.MiddleName;
-                per.Pass = person.Pass;
+                per.Passport = person.Passport;
                 per.Phone = person.Phone;
                 per.Email = person.Email;
                 per.Age = person.Age;

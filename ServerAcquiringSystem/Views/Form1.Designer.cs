@@ -44,16 +44,16 @@ namespace InterFaceModul
             OFFTerminal = new RadioButton();
             timer1 = new System.Windows.Forms.Timer(components);
             InfoForClientGroupBox = new GroupBox();
-            emailOutput = new Label();
-            phoneLabelOutput = new Label();
-            ageLabelOtput = new Label();
-            DateOfBirthLabelOutput = new Label();
-            AddressLabelOutput = new Label();
-            pasportLabelOtput = new Label();
-            INNLabelOutput = new Label();
-            middleNameLabelOutput = new Label();
-            lastnameLabelOutput = new Label();
-            nameLabelOutput = new Label();
+            emailOutputLabel = new Label();
+            phoneOutputLabel = new Label();
+            ageOutputLabel = new Label();
+            dateOfBirthOutputLabel = new Label();
+            passportOutputLabel = new Label();
+            innOutputLabel = new Label();
+            addressOutputLabel = new Label();
+            midleNameLabelOutput = new Label();
+            lastNameOutputLabel = new Label();
+            firstNameLabelOutput = new Label();
             middleNameLabel = new Label();
             email = new Label();
             phoneLabel = new Label();
@@ -65,16 +65,16 @@ namespace InterFaceModul
             lastnameLabel = new Label();
             nameLabel = new Label();
             infoForAccountClient = new GroupBox();
-            pincodeLabelOutput = new Label();
-            balanceLabelOutput = new Label();
-            AccountLabelOutput = new Label();
-            accounts = new GroupBox();
+            pincodeOutputLabel = new Label();
+            balanceOutputLabel = new Label();
+            accOutputLabel = new Label();
             pincodeLabel = new Label();
             balanceLabel = new Label();
             AccountLabel = new Label();
             listBoxClients = new ListBox();
             groupBox2 = new GroupBox();
             button1 = new Button();
+            add_client = new Button();
             functionalGroupBox.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox4.SuspendLayout();
@@ -198,16 +198,16 @@ namespace InterFaceModul
             // 
             // InfoForClientGroupBox
             // 
-            InfoForClientGroupBox.Controls.Add(emailOutput);
-            InfoForClientGroupBox.Controls.Add(phoneLabelOutput);
-            InfoForClientGroupBox.Controls.Add(ageLabelOtput);
-            InfoForClientGroupBox.Controls.Add(DateOfBirthLabelOutput);
-            InfoForClientGroupBox.Controls.Add(AddressLabelOutput);
-            InfoForClientGroupBox.Controls.Add(pasportLabelOtput);
-            InfoForClientGroupBox.Controls.Add(INNLabelOutput);
-            InfoForClientGroupBox.Controls.Add(middleNameLabelOutput);
-            InfoForClientGroupBox.Controls.Add(lastnameLabelOutput);
-            InfoForClientGroupBox.Controls.Add(nameLabelOutput);
+            InfoForClientGroupBox.Controls.Add(emailOutputLabel);
+            InfoForClientGroupBox.Controls.Add(phoneOutputLabel);
+            InfoForClientGroupBox.Controls.Add(ageOutputLabel);
+            InfoForClientGroupBox.Controls.Add(dateOfBirthOutputLabel);
+            InfoForClientGroupBox.Controls.Add(passportOutputLabel);
+            InfoForClientGroupBox.Controls.Add(innOutputLabel);
+            InfoForClientGroupBox.Controls.Add(addressOutputLabel);
+            InfoForClientGroupBox.Controls.Add(midleNameLabelOutput);
+            InfoForClientGroupBox.Controls.Add(lastNameOutputLabel);
+            InfoForClientGroupBox.Controls.Add(firstNameLabelOutput);
             InfoForClientGroupBox.Controls.Add(middleNameLabel);
             InfoForClientGroupBox.Controls.Add(email);
             InfoForClientGroupBox.Controls.Add(phoneLabel);
@@ -225,91 +225,111 @@ namespace InterFaceModul
             InfoForClientGroupBox.TabStop = false;
             InfoForClientGroupBox.Text = "Данные о клиенте";
             // 
-            // emailOutput
+            // emailOutputLabel
             // 
-            emailOutput.AutoSize = true;
-            emailOutput.Location = new Point(82, 495);
-            emailOutput.Name = "emailOutput";
-            emailOutput.Size = new Size(0, 25);
-            emailOutput.TabIndex = 36;
+            emailOutputLabel.AutoSize = true;
+            emailOutputLabel.Location = new Point(88, 495);
+            emailOutputLabel.Name = "emailOutputLabel";
+            emailOutputLabel.Size = new Size(152, 25);
+            emailOutputLabel.TabIndex = 35;
+            emailOutputLabel.Text = "emailOutputLabel";
+            emailOutputLabel.Visible = false;
             // 
-            // phoneLabelOutput
+            // phoneOutputLabel
             // 
-            phoneLabelOutput.AutoSize = true;
-            phoneLabelOutput.Location = new Point(105, 447);
-            phoneLabelOutput.Name = "phoneLabelOutput";
-            phoneLabelOutput.Size = new Size(0, 25);
-            phoneLabelOutput.TabIndex = 35;
+            phoneOutputLabel.AutoSize = true;
+            phoneOutputLabel.Location = new Point(112, 447);
+            phoneOutputLabel.Name = "phoneOutputLabel";
+            phoneOutputLabel.Size = new Size(161, 25);
+            phoneOutputLabel.TabIndex = 34;
+            phoneOutputLabel.Text = "phoneOutputLabel";
+            phoneOutputLabel.Visible = false;
             // 
-            // ageLabelOtput
+            // ageOutputLabel
             // 
-            ageLabelOtput.AutoSize = true;
-            ageLabelOtput.Location = new Point(106, 400);
-            ageLabelOtput.Name = "ageLabelOtput";
-            ageLabelOtput.Size = new Size(0, 25);
-            ageLabelOtput.TabIndex = 34;
+            ageOutputLabel.AutoSize = true;
+            ageOutputLabel.Location = new Point(112, 400);
+            ageOutputLabel.Name = "ageOutputLabel";
+            ageOutputLabel.Size = new Size(139, 25);
+            ageOutputLabel.TabIndex = 33;
+            ageOutputLabel.Text = "ageOutputLabel";
+            ageOutputLabel.Visible = false;
             // 
-            // DateOfBirthLabelOutput
+            // dateOfBirthOutputLabel
             // 
-            DateOfBirthLabelOutput.AutoSize = true;
-            DateOfBirthLabelOutput.Location = new Point(170, 352);
-            DateOfBirthLabelOutput.Name = "DateOfBirthLabelOutput";
-            DateOfBirthLabelOutput.Size = new Size(0, 25);
-            DateOfBirthLabelOutput.TabIndex = 33;
+            dateOfBirthOutputLabel.AutoSize = true;
+            dateOfBirthOutputLabel.Location = new Point(182, 352);
+            dateOfBirthOutputLabel.Name = "dateOfBirthOutputLabel";
+            dateOfBirthOutputLabel.Size = new Size(201, 25);
+            dateOfBirthOutputLabel.TabIndex = 32;
+            dateOfBirthOutputLabel.Text = "dateOfBirthOutputLabel";
+            dateOfBirthOutputLabel.Visible = false;
             // 
-            // AddressLabelOutput
+            // passportOutputLabel
             // 
-            AddressLabelOutput.AutoSize = true;
-            AddressLabelOutput.Location = new Point(92, 306);
-            AddressLabelOutput.Name = "AddressLabelOutput";
-            AddressLabelOutput.Size = new Size(0, 25);
-            AddressLabelOutput.TabIndex = 32;
+            passportOutputLabel.AutoSize = true;
+            passportOutputLabel.Location = new Point(116, 263);
+            passportOutputLabel.Name = "passportOutputLabel";
+            passportOutputLabel.Size = new Size(180, 25);
+            passportOutputLabel.TabIndex = 31;
+            passportOutputLabel.Text = "passportOutputLabel";
+            passportOutputLabel.Visible = false;
             // 
-            // pasportLabelOtput
+            // innOutputLabel
             // 
-            pasportLabelOtput.AutoSize = true;
-            pasportLabelOtput.Location = new Point(111, 263);
-            pasportLabelOtput.Name = "pasportLabelOtput";
-            pasportLabelOtput.Size = new Size(0, 25);
-            pasportLabelOtput.TabIndex = 31;
+            innOutputLabel.AutoSize = true;
+            innOutputLabel.Location = new Point(80, 218);
+            innOutputLabel.Name = "innOutputLabel";
+            innOutputLabel.Size = new Size(134, 25);
+            innOutputLabel.TabIndex = 30;
+            innOutputLabel.Text = "innOutputLabel";
+            innOutputLabel.Visible = false;
             // 
-            // INNLabelOutput
+            // addressOutputLabel
             // 
-            INNLabelOutput.AutoSize = true;
-            INNLabelOutput.Location = new Point(81, 218);
-            INNLabelOutput.Name = "INNLabelOutput";
-            INNLabelOutput.Size = new Size(0, 25);
-            INNLabelOutput.TabIndex = 30;
+            addressOutputLabel.AutoSize = true;
+            addressOutputLabel.Location = new Point(93, 306);
+            addressOutputLabel.Name = "addressOutputLabel";
+            addressOutputLabel.Size = new Size(172, 25);
+            addressOutputLabel.TabIndex = 30;
+            addressOutputLabel.Text = "addressOutputLabel";
+            addressOutputLabel.Visible = false;
             // 
-            // middleNameLabelOutput
+            // midleNameLabelOutput
             // 
-            middleNameLabelOutput.AutoSize = true;
-            middleNameLabelOutput.Location = new Point(114, 165);
-            middleNameLabelOutput.Name = "middleNameLabelOutput";
-            middleNameLabelOutput.Size = new Size(0, 25);
-            middleNameLabelOutput.TabIndex = 29;
+            midleNameLabelOutput.AutoSize = true;
+            midleNameLabelOutput.Location = new Point(112, 165);
+            midleNameLabelOutput.Name = "midleNameLabelOutput";
+            midleNameLabelOutput.Size = new Size(201, 25);
+            midleNameLabelOutput.TabIndex = 29;
+            midleNameLabelOutput.Text = "midleNameLabelOutput";
+            midleNameLabelOutput.Visible = false;
             // 
-            // lastnameLabelOutput
+            // lastNameOutputLabel
             // 
-            lastnameLabelOutput.AutoSize = true;
-            lastnameLabelOutput.Location = new Point(111, 112);
-            lastnameLabelOutput.Name = "lastnameLabelOutput";
-            lastnameLabelOutput.Size = new Size(0, 25);
-            lastnameLabelOutput.TabIndex = 28;
+            lastNameOutputLabel.AutoSize = true;
+            lastNameOutputLabel.Location = new Point(116, 112);
+            lastNameOutputLabel.Name = "lastNameOutputLabel";
+            lastNameOutputLabel.Size = new Size(184, 25);
+            lastNameOutputLabel.TabIndex = 28;
+            lastNameOutputLabel.Text = "lastNameOutputLabel";
+            lastNameOutputLabel.Visible = false;
             // 
-            // nameLabelOutput
+            // firstNameLabelOutput
             // 
-            nameLabelOutput.AutoSize = true;
-            nameLabelOutput.Location = new Point(105, 66);
-            nameLabelOutput.Name = "nameLabelOutput";
-            nameLabelOutput.Size = new Size(0, 25);
-            nameLabelOutput.TabIndex = 27;
+            firstNameLabelOutput.AutoSize = true;
+            firstNameLabelOutput.Location = new Point(78, 64);
+            firstNameLabelOutput.Name = "firstNameLabelOutput";
+            firstNameLabelOutput.Size = new Size(187, 25);
+            firstNameLabelOutput.TabIndex = 27;
+            firstNameLabelOutput.Text = "firstNameLabelOutput";
+            firstNameLabelOutput.Visible = false;
             // 
             // middleNameLabel
             // 
             middleNameLabel.AutoSize = true;
             middleNameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            middleNameLabel.Location = new Point(20, 165);
+            middleNameLabel.Location = new Point(24, 165);
             middleNameLabel.Name = "middleNameLabel";
             middleNameLabel.Size = new Size(93, 25);
             middleNameLabel.TabIndex = 26;
@@ -389,7 +409,7 @@ namespace InterFaceModul
             // 
             lastnameLabel.AutoSize = true;
             lastnameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lastnameLabel.Location = new Point(20, 112);
+            lastnameLabel.Location = new Point(24, 112);
             lastnameLabel.Name = "lastnameLabel";
             lastnameLabel.Size = new Size(94, 25);
             lastnameLabel.TabIndex = 1;
@@ -407,77 +427,76 @@ namespace InterFaceModul
             // 
             // infoForAccountClient
             // 
-            infoForAccountClient.Controls.Add(pincodeLabelOutput);
-            infoForAccountClient.Controls.Add(balanceLabelOutput);
-            infoForAccountClient.Controls.Add(AccountLabelOutput);
-            infoForAccountClient.Controls.Add(accounts);
+            infoForAccountClient.Controls.Add(pincodeOutputLabel);
+            infoForAccountClient.Controls.Add(balanceOutputLabel);
+            infoForAccountClient.Controls.Add(accOutputLabel);
             infoForAccountClient.Controls.Add(pincodeLabel);
             infoForAccountClient.Controls.Add(balanceLabel);
             infoForAccountClient.Controls.Add(AccountLabel);
             infoForAccountClient.Location = new Point(1407, 37);
             infoForAccountClient.Name = "infoForAccountClient";
-            infoForAccountClient.Size = new Size(477, 568);
+            infoForAccountClient.Size = new Size(477, 190);
             infoForAccountClient.TabIndex = 28;
             infoForAccountClient.TabStop = false;
             infoForAccountClient.Text = "Информация о счете";
             // 
-            // pincodeLabelOutput
+            // pincodeOutputLabel
             // 
-            pincodeLabelOutput.AutoSize = true;
-            pincodeLabelOutput.Location = new Point(109, 138);
-            pincodeLabelOutput.Name = "pincodeLabelOutput";
-            pincodeLabelOutput.Size = new Size(0, 25);
-            pincodeLabelOutput.TabIndex = 30;
+            pincodeOutputLabel.AutoSize = true;
+            pincodeOutputLabel.Location = new Point(103, 138);
+            pincodeOutputLabel.Name = "pincodeOutputLabel";
+            pincodeOutputLabel.Size = new Size(174, 25);
+            pincodeOutputLabel.TabIndex = 35;
+            pincodeOutputLabel.Text = "pincodeOutputLabel";
+            pincodeOutputLabel.Visible = false;
             // 
-            // balanceLabelOutput
+            // balanceOutputLabel
             // 
-            balanceLabelOutput.AutoSize = true;
-            balanceLabelOutput.Location = new Point(109, 100);
-            balanceLabelOutput.Name = "balanceLabelOutput";
-            balanceLabelOutput.Size = new Size(0, 25);
-            balanceLabelOutput.TabIndex = 29;
+            balanceOutputLabel.AutoSize = true;
+            balanceOutputLabel.Location = new Point(97, 100);
+            balanceOutputLabel.Name = "balanceOutputLabel";
+            balanceOutputLabel.Size = new Size(170, 25);
+            balanceOutputLabel.TabIndex = 34;
+            balanceOutputLabel.Text = "balanceOutputLabel";
+            balanceOutputLabel.Visible = false;
             // 
-            // AccountLabelOutput
+            // accOutputLabel
             // 
-            AccountLabelOutput.AutoSize = true;
-            AccountLabelOutput.Location = new Point(109, 66);
-            AccountLabelOutput.Name = "AccountLabelOutput";
-            AccountLabelOutput.Size = new Size(0, 25);
-            AccountLabelOutput.TabIndex = 28;
-            // 
-            // accounts
-            // 
-            accounts.Location = new Point(36, 311);
-            accounts.Name = "accounts";
-            accounts.Size = new Size(421, 243);
-            accounts.TabIndex = 4;
-            accounts.TabStop = false;
-            accounts.Text = "Другие счета:";
+            accOutputLabel.AutoSize = true;
+            accOutputLabel.Location = new Point(79, 60);
+            accOutputLabel.Name = "accOutputLabel";
+            accOutputLabel.Size = new Size(135, 25);
+            accOutputLabel.TabIndex = 33;
+            accOutputLabel.Text = "accOutputLabel";
+            accOutputLabel.Visible = false;
             // 
             // pincodeLabel
             // 
             pincodeLabel.AutoSize = true;
-            pincodeLabel.Location = new Point(22, 138);
+            pincodeLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            pincodeLabel.Location = new Point(24, 138);
             pincodeLabel.Name = "pincodeLabel";
-            pincodeLabel.Size = new Size(75, 25);
+            pincodeLabel.Size = new Size(80, 25);
             pincodeLabel.TabIndex = 3;
             pincodeLabel.Text = "Пинкод";
             // 
             // balanceLabel
             // 
             balanceLabel.AutoSize = true;
+            balanceLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             balanceLabel.Location = new Point(24, 100);
             balanceLabel.Name = "balanceLabel";
-            balanceLabel.Size = new Size(67, 25);
+            balanceLabel.Size = new Size(75, 25);
             balanceLabel.TabIndex = 2;
             balanceLabel.Text = "Баланс";
             // 
             // AccountLabel
             // 
             AccountLabel.AutoSize = true;
+            AccountLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             AccountLabel.Location = new Point(24, 60);
             AccountLabel.Name = "AccountLabel";
-            AccountLabel.Size = new Size(49, 25);
+            AccountLabel.Size = new Size(52, 25);
             AccountLabel.TabIndex = 1;
             AccountLabel.Text = "Счет";
             // 
@@ -489,6 +508,7 @@ namespace InterFaceModul
             listBoxClients.Name = "listBoxClients";
             listBoxClients.Size = new Size(431, 529);
             listBoxClients.TabIndex = 29;
+            listBoxClients.Click += listBoxClients_Click;
             // 
             // groupBox2
             // 
@@ -510,11 +530,22 @@ namespace InterFaceModul
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // add_client
+            // 
+            add_client.Location = new Point(1031, 696);
+            add_client.Name = "add_client";
+            add_client.Size = new Size(112, 34);
+            add_client.TabIndex = 32;
+            add_client.Text = "add client";
+            add_client.UseVisualStyleBackColor = true;
+            add_client.Click += add_client_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1888, 784);
+            Controls.Add(add_client);
             Controls.Add(button1);
             Controls.Add(groupBox2);
             Controls.Add(infoForAccountClient);
@@ -564,26 +595,26 @@ namespace InterFaceModul
         private Label INNLabel;
         private Label lastnameLabel;
         private Label nameLabel;
-        private Label INNLabelOutput;
-        private Label middleNameLabelOutput;
-        private Label lastnameLabelOutput;
-        private Label nameLabelOutput;
         private GroupBox infoForAccountClient;
-        private GroupBox accounts;
         private Label pincodeLabel;
         private Label balanceLabel;
         private Label AccountLabel;
-        private Label emailOutput;
-        private Label phoneLabelOutput;
-        private Label ageLabelOtput;
-        private Label DateOfBirthLabelOutput;
-        private Label AddressLabelOutput;
-        private Label pasportLabelOtput;
-        private Label pincodeLabelOutput;
-        private Label balanceLabelOutput;
-        private Label AccountLabelOutput;
         private ListBox listBoxClients;
         private GroupBox groupBox2;
         private Button button1;
+        private Label emailOutputLabel;
+        private Label phoneOutputLabel;
+        private Label ageOutputLabel;
+        private Label dateOfBirthOutputLabel;
+        private Label passportOutputLabel;
+        private Label innOutputLabel;
+        private Label addressOutputLabel;
+        private Label midleNameLabelOutput;
+        private Label lastNameOutputLabel;
+        private Label firstNameLabelOutput;
+        private Label pincodeOutputLabel;
+        private Label balanceOutputLabel;
+        private Label accOutputLabel;
+        private Button add_client;
     }
 }

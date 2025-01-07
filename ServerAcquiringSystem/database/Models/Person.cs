@@ -27,7 +27,7 @@ namespace InterFaceModul.database.Models
         public string INN { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Введите серию и номер паспорта без проблема")]
-        public string Pass { get; set; } = string.Empty;
+        public string Passport { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Введите телефон")]
         public string Phone { get; set; } = string.Empty;

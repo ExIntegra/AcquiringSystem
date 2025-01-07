@@ -39,7 +39,8 @@ namespace InterFaceModul
             _selectedPerson = databaseService.GetPersonById(SelectedIndex);
 
             acc.Text = _selectedPerson.uid;
-            balance.Text = _selectedPerson.balance;
+            balance.Text = _selectedPerson.balance.ToString();
+            pincode.Text = _selectedPerson.pincode;
             nameInput.Text = _selectedPerson.FirstName;
             lastNameInput.Text = _selectedPerson.LastName;
             middleNameInput.Text = _selectedPerson.MiddleName;
@@ -47,7 +48,7 @@ namespace InterFaceModul
             emailInput.Text = _selectedPerson.Email;
             if (_selectedPerson.Email != null)
             {
-                passInput.Text = Convert.ToString(_selectedPerson.Pass);
+                passInput.Text = Convert.ToString(_selectedPerson.Passport);
             }
             else
             {
@@ -80,7 +81,7 @@ namespace InterFaceModul
             Close();
         }
 
-        private void addClientButton_Click(object sender, EventArgs e)
+        private void addClientButton_Click(object sender, EventArgs e) //добавление
         {
             if (string.IsNullOrWhiteSpace(nameInput.Text) ||
                 string.IsNullOrWhiteSpace(lastNameInput.Text) ||
@@ -95,15 +96,18 @@ namespace InterFaceModul
             }
 
             var validationResults = new List<ValidationResult>();
-           AppDBContext context = new AppDBContext();
+           //AppDBContext context = new AppDBContext();
             Person person = new Person()
             {
+                uid = acc.Text,
+                pincode = pincode.Text,
+                balance = int.Parse(balance.Text),
                 FirstName = nameInput.Text,
                 LastName = lastNameInput.Text,
                 MiddleName = middleNameInput.Text,
                 Phone = phoneInput.Text,
                 Email = emailInput.Text,
-                Pass = passInput.Text,
+                Passport = passInput.Text,
                 Age = AgeInput.Text,
                 INN = INNInput.Text,
             };

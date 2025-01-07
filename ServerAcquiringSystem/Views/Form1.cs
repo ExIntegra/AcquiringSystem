@@ -191,14 +191,88 @@ namespace InterFaceModul
                 _databaseService.Delete(deletePerson);
                 listBoxClients.Items.Remove(listBoxClients.SelectedIndex);
                 Form1_Activated(sender, e);
+
+                firstNameLabelOutput.Visible = false;
+                midleNameLabelOutput.Visible = false;
+                lastNameOutputLabel.Visible = false;
+                ageOutputLabel.Visible = false;
+                passportOutputLabel.Visible = false;
+                emailOutputLabel.Visible = false;
+                balanceOutputLabel.Visible = false;
+                pincodeOutputLabel.Visible = false;
+                accOutputLabel.Visible = false;
+                innOutputLabel.Visible = false;
+                addressOutputLabel.Visible = false;
+                dateOfBirthOutputLabel.Visible = false;
             };
 
         }
+
+        private void listBoxClients_Click(object sender, EventArgs e)
+        {
+            Person viewPerson = _databaseService.GetPersonById(listBoxClients.SelectedIndex);
+            firstNameLabelOutput.Text = viewPerson.FirstName;
+            midleNameLabelOutput.Text = viewPerson.MiddleName;
+            lastNameOutputLabel.Text = viewPerson.LastName;
+            ageOutputLabel.Text = viewPerson.Age;
+            passportOutputLabel.Text = viewPerson.Passport;
+            emailOutputLabel.Text = viewPerson.Email;
+            balanceOutputLabel.Text = viewPerson.balance.ToString();
+            pincodeOutputLabel.Text = viewPerson.pincode;
+            accOutputLabel.Text = viewPerson.uid;
+            //dateOfBirthOutputLabel.Text = viewPerson.DateOfBirth;
+            innOutputLabel.Text = viewPerson.INN;
+            addressOutputLabel.Text = viewPerson.Address;
+
+            firstNameLabelOutput.Visible = true;
+            midleNameLabelOutput.Visible = true;
+            lastNameOutputLabel.Visible = true;
+            ageOutputLabel.Visible = true;
+            passportOutputLabel.Visible = true;
+            emailOutputLabel.Visible = true;
+            balanceOutputLabel.Visible = true;
+            pincodeOutputLabel.Visible = true;
+            accOutputLabel.Visible = true;
+            innOutputLabel.Visible = true;
+            addressOutputLabel.Visible = true;
+            dateOfBirthOutputLabel.Visible = true;
+
+
+        }
+
+
+        //‘”Õ ÷»ŒÕ¿À ƒÀﬂ Œ“À¿ƒ » œ–Œ√–¿ÃÃ€ ¬–≈Ã≈ÕÕŒ
 
         private void button1_Click(object sender, EventArgs e)
         {
             string answer = _databaseService.transaction("0000111122223333", "1234", 2000);
             LogMessage(answer);
+        }
+
+
+
+        private void add_client_Click(object sender, EventArgs e)
+        {
+            AppDBContext context = new AppDBContext();
+            DatabaseServise databaseServise = new DatabaseServise(context);
+            Person person = new Person()
+            {
+                uid = "1111222233334444",
+                pincode = "1234",
+                balance = int.Parse("2341"),
+                FirstName = "Ilya",
+                LastName = "Kalinin",
+                MiddleName = "Anatolevich",
+                Phone = "+79000000000",
+                Email = "ilyakalinin@mail.ru",
+                Passport = "4910 221144",
+                Age = "20",
+                INN = "123456789012",
+                Address = "dom kalatushkina"
+            };
+
+            databaseServise.Add(person);
+            Form1_Activated(sender, e);
         }
     }
 }
