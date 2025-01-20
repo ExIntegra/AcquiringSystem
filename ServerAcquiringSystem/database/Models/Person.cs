@@ -12,39 +12,42 @@ namespace InterFaceModul.database.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Введите имя")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Недопустимая длина имени")]
         public string FirstName { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Введите фамилию")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Недопустимая длина Фамилии")]
         public string LastName { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Введите отчество")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Недопустимая длина Отчества")]
+
         public string MiddleName { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Введите возраст")]
-        public string Age { get; set; } = string.Empty;
+        [Range(4, 100, ErrorMessage = "Возраст от 4 до 100 лет")]
+        public int Age { get; set; }
 
+        [StringLength(12, MinimumLength = 12, ErrorMessage = "Длина ИНН 12 цифр")]
         [Required(ErrorMessage = "Введите ИНН")]
         public string INN { get; set; } = string.Empty;
 
+        [StringLength(10, MinimumLength = 10, ErrorMessage = "Длина серии и номера паспорта 10 цифр")]
         [Required(ErrorMessage = "Введите серию и номер паспорта без проблема")]
         public string Passport { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Введите телефон")]
-        public string Phone { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Баланс")]
+        [Range(0, 10000, ErrorMessage = "Баланс не меньше 0 и не больше 10000")]
+        public int Balance { get; set; }
 
-        public string Address { get; set; } = string.Empty;
+        [StringLength(4, MinimumLength = 4, ErrorMessage = "Длина пинкода 4 символа")]
+        public string Pincode { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Введите email")]
-        public string Email { get; set; } = string.Empty;
+        public int AttemptCounter { get; set; } = 3;
 
-        public int balance { get; set; } = 0;
+        public bool StatusTransactionCard { get; set; } = true;
 
-        public string pincode { get; set; } = string.Empty;
-
-        public int attemptCounter { get; set; } = 3;
-
-        public bool statusTransactionCard { get; set; } = true;
-
-        public string uid { get; set; } = string.Empty;
+        [Required(ErrorMessage = "UID")]
+        public string Uid { get; set; }
     }
 }
